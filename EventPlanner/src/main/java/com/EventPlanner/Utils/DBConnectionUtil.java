@@ -16,11 +16,11 @@ public class DBConnectionUtil {
 		try {
 			if(connection == null || connection.isClosed()) {
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/testsignup","root","GGsl@1974");
+				connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/event_planner_db","root","GGsl@1974");
 			}
 		} catch (SQLException | ClassNotFoundException e) {
 			
-			e.printStackTrace();
+			ErrorLoggerUtil.logError("Database Connection Util:","Connection Failed", e);
 		}
 		return connection;
 	}
@@ -32,7 +32,7 @@ public class DBConnectionUtil {
 				connection.close();
 			}
 		} catch (SQLException e) {	
-			e.printStackTrace();
+			ErrorLoggerUtil.logError("Database Connection Util:","Connection Failed", e);
 		}
 		
 	}
