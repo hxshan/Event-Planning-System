@@ -12,9 +12,13 @@ public class ErrorLoggerUtil {
 	 static {
 		 
 		 try {
+
 			 
 			 //change file location to whatever fits you :)
-			FileHandler filehandler=new FileHandler("C:/Users/LENOVO/Documents/ErrorLogs/Error.log",true);
+			
+
+			FileHandler filehandler=new FileHandler("C:/Users/sadhadh/OneDrive/Documents/Logs/Error.log",true);
+
 			filehandler.setFormatter(new SimpleFormatter());
 			logger.addHandler(filehandler);
 		} catch (SecurityException e) {
