@@ -17,7 +17,7 @@ public class ErrorLoggerUtil {
 			 //change file location to whatever fits you :)
 			
 
-			FileHandler filehandler=new FileHandler("C:/Users/sadhadh/OneDrive/Documents/Logs/Error.log",true);
+			FileHandler filehandler=new FileHandler("/Error.log",true);
 
 			filehandler.setFormatter(new SimpleFormatter());
 			logger.addHandler(filehandler);
