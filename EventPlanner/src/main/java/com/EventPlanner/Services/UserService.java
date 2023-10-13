@@ -14,9 +14,6 @@ public class UserService {
 			Connection con = DBConnectionUtil.getDBConnection();
 			
 			String sql="insert into users(id,email,name,password,user_type_id)values(NULL,?,?,?,?);";
-			
-			
-			
 			try {
 				PreparedStatement stmt = con.prepareStatement(sql);
 				stmt.setString(1,user.getEmail());	
@@ -129,7 +126,7 @@ public class UserService {
 			int typeid = 0;
 			try {
 				PreparedStatement stmt = con.prepareStatement(sql);
-				stmt.setString(1,type);;
+				stmt.setString(1,type);
 				ResultSet rs=stmt.executeQuery();
 				if(rs.next()) {
 					typeid=rs.getInt("id");
@@ -146,6 +143,35 @@ public class UserService {
 				
 			}
 			return typeid;
+			
+			
+		}
+		
+		public String getUserTypeById(int id){
+			
+			Connection con = DBConnectionUtil.getDBConnection();
+			
+			String sql="select type from user_types where id=?";
+			String type="";
+			try {
+				PreparedStatement stmt = con.prepareStatement(sql);
+				stmt.setInt(1,id);
+				ResultSet rs=stmt.executeQuery();
+				if(rs.next()) {
+					type=rs.getString("type");
+				}	
+				rs.close();
+				stmt.close();
+			} catch (SQLException e) { 
+				ErrorLoggerUtil.logError("UserService","SQL ERROR: ", e);
+				e.printStackTrace();
+				//logger.error("Error: ",e);
+			}
+			finally{
+				DBConnectionUtil.closeConnection(con);
+				
+			}
+			return type;
 			
 			
 		}
