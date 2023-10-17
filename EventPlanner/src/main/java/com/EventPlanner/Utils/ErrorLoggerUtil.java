@@ -11,14 +11,9 @@ public class ErrorLoggerUtil {
 	 //setting up the Logger
 	 static {
 		 
-		 try {
-
-			 
+		 try {		 
 			 //change file location to whatever fits you :)
-			
-
-			FileHandler filehandler=new FileHandler("/Error.log",true);
-
+			FileHandler filehandler=new FileHandler("C:/Users/LENOVO/Documents/ErrorLogs/Error.log",true);
 			filehandler.setFormatter(new SimpleFormatter());
 			logger.addHandler(filehandler);
 		} catch (SecurityException e) {

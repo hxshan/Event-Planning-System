@@ -26,7 +26,7 @@ public class UserService {
 			} catch (SQLException e) {
 				e.printStackTrace();
 				//logger.error("Error: ",e);
-				ErrorLoggerUtil.logError("UserService","SQL ERROR: ", e);
+				ErrorLoggerUtil.logError("UserService(addUser)","SQL ERROR: ", e);
 				
 			}finally {
 				DBConnectionUtil.closeConnection(con);
@@ -52,7 +52,7 @@ public class UserService {
 				stmt.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
-				ErrorLoggerUtil.logError("UserService","SQL ERROR: ", e);
+				ErrorLoggerUtil.logError("UserService(userExist)","SQL ERROR: ", e);
 				//logger.error("Error: ",e);
 			}finally{
 				DBConnectionUtil.closeConnection(con);
@@ -80,7 +80,7 @@ public class UserService {
 				rs.close();
 				stmt.close();
 			} catch (SQLException e) {
-				ErrorLoggerUtil.logError("UserService","SQL ERROR: ", e);
+				ErrorLoggerUtil.logError("UserService(getuserDetails)","SQL ERROR: ", e);
 				e.printStackTrace();
 				//logger.error("Error: ",e);
 			}finally{
@@ -106,7 +106,7 @@ public class UserService {
 				stmt.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
-				ErrorLoggerUtil.logError("UserService","SQL ERROR: ", e);
+				ErrorLoggerUtil.logError("UserService(getUserPassword)","SQL ERROR: ", e);
 				//logger.error("Error: ",e);
 			}finally{
 				DBConnectionUtil.closeConnection(con);
@@ -134,7 +134,7 @@ public class UserService {
 				rs.close();
 				stmt.close();
 			} catch (SQLException e) { 
-				ErrorLoggerUtil.logError("UserService","SQL ERROR: ", e);
+				ErrorLoggerUtil.logError("UserService(getUserTypeId)","SQL ERROR: ", e);
 				e.printStackTrace();
 				//logger.error("Error: ",e);
 			}
@@ -163,7 +163,7 @@ public class UserService {
 				rs.close();
 				stmt.close();
 			} catch (SQLException e) { 
-				ErrorLoggerUtil.logError("UserService","SQL ERROR: ", e);
+				ErrorLoggerUtil.logError("UserService(getUserTypeById)","SQL ERROR: ", e);
 				e.printStackTrace();
 				//logger.error("Error: ",e);
 			}
