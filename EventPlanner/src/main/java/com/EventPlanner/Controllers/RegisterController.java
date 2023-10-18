@@ -23,19 +23,27 @@ public class RegisterController extends HttpServlet {
 		String name=request.getParameter("name").trim();
 		String email=request.getParameter("email").trim();
 		String pwd=request.getParameter("password").trim();
+		String PhoneNumber=request.getParameter("contact").trim();
 		String hashpwd=BCrypt.hashpw(pwd,BCrypt.gensalt());
 		String userType=request.getParameter("userType").trim();
 		
 		System.out.print(userType);
 		if(userType.equalsIgnoreCase("User")) {
 			UserService userservice = new UserService();
-			User user = new User(userservice.getUserTypeId("Organiser"),name, email, hashpwd);
+			User user = new User(userservice.getUserTypeId("Organiser"),name, email, PhoneNumber, hashpwd);
 			userservice.addUser(user);			
 			response.sendRedirect("./static/Login.jsp");
 			
 		}else if(userType.equalsIgnoreCase("Vendor")) {
-			/*VendorService vendorservice = new VendorService();
-			Vendor vendor=new Vendor();*/
+			VendorService vendorservice = new VendorService();
+			String description=request.getParameter("description").trim();
+			String address=request.getParameter("address").trim();
+			int TypeId=vendorservice.getUserTypeId("Vendor");
+			
+			
+			Vendor vendor=new Vendor(TypeId,name,email,PhoneNumber,hashpwd,description,address);
+			vendorservice.addVendor(vendor);
+			response.sendRedirect("./static/Login.jsp");
 		}
 		
 		

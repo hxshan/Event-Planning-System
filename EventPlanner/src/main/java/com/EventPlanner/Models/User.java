@@ -5,21 +5,35 @@ public class User {
 	private int UserTypeId;
 	private String Name;
 	private String Email;
+	private String PhoneNumber;
 	private String Password;
 	
 	
 	
 	
-	public User(int typeid,String name,String email,String pwd){
+	public User(int typeid,String name,String email, String PhoneNumber,String pwd){
 	
 		this.UserTypeId=typeid;
 		this.Name=name;
 		this.Email=email;
+		this.PhoneNumber=PhoneNumber;
 		this.Password=pwd;
 	}
 	
 	
 	
+	public String getPhoneNumber() {
+		return PhoneNumber;
+	}
+
+
+
+	public void setPhoneNumber(String phoneNumber) {
+		PhoneNumber = phoneNumber;
+	}
+
+
+
 	public User() {
 		
 	}

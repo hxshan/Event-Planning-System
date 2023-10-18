@@ -67,6 +67,25 @@ form .input-box span.details{
   border-color: #9b59b6;
 }
 
+.box2{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.box2:focus, .box2:valid{
+  border-color: #9b59b6;
+}
+  
+  
+
+
  
  form .category{
    display: flex;

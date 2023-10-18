@@ -18,19 +18,20 @@ public class VendorService extends UserService{
 	public void addVendor(Vendor vendor) {
 		Connection con = DBConnectionUtil.getDBConnection();
 		
-		String sql="insert into users(id,email,name,password,user_type_id)values(NULL,?,?,?,?,?,?,?);";
+		String sql="insert into users(id,email,PhoneNumber,name,password,user_type_id,description,address)values(NULL,?,?,?,?,?,?,?);";
 		
 		
 		
 		try {
 			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setString(1,vendor.getEmail());	
-			stmt.setString(2,vendor.getName());
-			stmt.setString(3,vendor.getPassword());	
-			stmt.setInt(4,vendor.getUserTypeId());
-			stmt.setString(5,vendor.getDescription());
-			stmt.setString(6,vendor.getAddress());
-			stmt.setInt(7,vendor.getserviceTypeId());
+			stmt.setString(1,vendor.getEmail());
+			stmt.setString(2,vendor.getPhoneNumber());
+			stmt.setString(3,vendor.getName());
+			stmt.setString(4,vendor.getPassword());	
+			stmt.setInt(5,vendor.getUserTypeId());
+			stmt.setString(6,vendor.getDescription());
+			stmt.setString(7,vendor.getAddress());
+			
 			
 			stmt.executeUpdate();
 			stmt.close();
@@ -65,7 +66,7 @@ public class VendorService extends UserService{
 				vendor.setUserTypeId(rs.getInt("user_type_id"));
 				vendor.setDescription(rs.getString("description"));
 				vendor.setAddress(rs.getString("address"));
-				vendor.setserviceTypeId(rs.getInt("service_type_id"));
+				
 			}
 			rs.close();
 			stmt.close();

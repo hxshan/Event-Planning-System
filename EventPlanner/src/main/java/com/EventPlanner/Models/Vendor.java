@@ -4,14 +4,13 @@ public class Vendor extends User {
 	
 	private String description;
 	private String address;
-	private int serviceTypeId;
 	
 	
-	public Vendor(int typeid, String name, String email, String pwd,String des,String address,int servType ) {
-		super(typeid, name, email, pwd);
+	
+	public Vendor(int typeid, String name, String email, String PhoneNumber, String pwd,String des,String address ) {
+		super(typeid, name, email,PhoneNumber, pwd);
 		this.setDescription(des);
 		this.setAddress(address);
-		this.setserviceTypeId(servType);
 		
 	}
 
@@ -35,12 +34,6 @@ public class Vendor extends User {
 		this.description = description;
 	}
 
-	public int getserviceTypeId() {
-		return serviceTypeId;
-	}
 
-	public void setserviceTypeId(int serviceType) {
-		this.serviceTypeId = serviceType;
-	}
 
 }
