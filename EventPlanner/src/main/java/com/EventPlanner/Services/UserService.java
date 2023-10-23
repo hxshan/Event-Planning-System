@@ -76,13 +76,15 @@ public class UserService {
 					user.setName(rs.getString("name"));
 					user.setEmail(rs.getString("email"));
 					user.setUserTypeId(rs.getInt("user_type_id"));
+					user.setImageId(rs.getString("imageId"));
+					user.setImageName(rs.getString("imageName"));
 				}
 				rs.close();
 				stmt.close();
 			} catch (SQLException e) {
 				ErrorLoggerUtil.logError("UserService(getuserDetails)","SQL ERROR: ", e);
 				e.printStackTrace();
-				//logger.error("Error: ",e);
+				
 			}finally{
 				DBConnectionUtil.closeConnection(con);
 				
@@ -90,6 +92,40 @@ public class UserService {
 			
 			return user;
 		}
+		
+		public User getUserDetailsById(String id) {
+			Connection con = DBConnectionUtil.getDBConnection();		
+			String sql="select * from users where id=?";
+			User user=new User();
+			int intId=Integer.parseInt(id);
+			try {
+				PreparedStatement stmt=con.prepareStatement(sql);
+				stmt.setInt(1,intId);
+				ResultSet rs=stmt.executeQuery();
+				
+				if(rs.next())
+				{
+					user.setId(rs.getInt("id"));
+					user.setName(rs.getString("name"));
+					user.setEmail(rs.getString("email"));
+					user.setUserTypeId(rs.getInt("user_type_id"));
+					user.setImageId(rs.getString("imageId"));
+					user.setImageName(rs.getString("imageName"));
+				}
+				rs.close();
+				stmt.close();
+			} catch (SQLException e) {
+				ErrorLoggerUtil.logError("UserService(getuserDetailsByid)","SQL ERROR: ", e);
+				e.printStackTrace();
+				
+			}finally{
+				DBConnectionUtil.closeConnection(con);
+				
+			}
+			
+			return user;
+		}
+		
 		public String getUserPassword(String email) {
 			
 			Connection con = DBConnectionUtil.getDBConnection();		
@@ -114,9 +150,6 @@ public class UserService {
 			}
 			return password;
 		}
-		
-		
-		
 		
 		public int getUserTypeId(String type){
 				
@@ -176,4 +209,21 @@ public class UserService {
 			
 		}
 			
+		public void updateProfileImage(String uuid,String filename,String userId) {
+			Connection con = DBConnectionUtil.getDBConnection();
+			String sql="update users set imageName =? ,imageId=? where id = ?;";
+			try {
+				PreparedStatement stmt = con.prepareStatement(sql);
+				stmt.setString(1,filename);
+				stmt.setString(2,uuid);
+				stmt.setString(3,userId);
+				stmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				ErrorLoggerUtil.logError("UserService(updateProfileImage)","Sql Error", e);
+			}finally {
+				DBConnectionUtil.closeConnection(con);
+			}
+			
+		}
 }

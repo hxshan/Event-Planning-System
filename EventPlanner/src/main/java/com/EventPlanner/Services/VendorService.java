@@ -17,7 +17,6 @@ public class VendorService extends UserService{
 	
 	public void addVendor(Vendor vendor) {
 		Connection con = DBConnectionUtil.getDBConnection();
-		
 		String sql="insert into users(id,email,name,password,user_type_id)values(NULL,?,?,?,?,?,?,?);";
 		
 		
@@ -36,12 +35,11 @@ public class VendorService extends UserService{
 			stmt.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
-			//logger.error("Error: ",e);
 			ErrorLoggerUtil.logError("UserService","SQL ERROR: ", e);
 			
 		}finally {
 			DBConnectionUtil.closeConnection(con);
+			
 		}
 			
 	}

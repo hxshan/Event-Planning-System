@@ -107,4 +107,31 @@ public class EventService {
 		return Etypelist;
 	}
 	
+	public Event getEventDetails(int eventId) {
+		Connection con = DBConnectionUtil.getDBConnection();		
+		String sql="select * from event where id=?";
+		Event event=new Event();
+		ResultSet rs = null;
+		try {
+			PreparedStatement stmt=con.prepareStatement(sql);
+			stmt.setInt(1,eventId);
+			rs=stmt.executeQuery();	
+		} catch (SQLException e) {
+		
+			ErrorLoggerUtil.logError("EventService(getEventDetails)", "Sql Error prepared stmt", e);
+		}
+		try {
+			if(rs.next()) {
+				event.setId(rs.getInt("id"));
+				event.setName(rs.getString("name"));
+				event.setType_id(rs.getInt("type_id"));
+				event.setStartdate(rs.getDate("startDate").toLocalDate());
+				event.setEnddate(rs.getDate("endDate").toLocalDate());
+				event.setOwnerId(rs.getInt("ownerId"));
+			}
+		} catch (SQLException e) {
+			ErrorLoggerUtil.logError("EventService(getUsersEvents)", "Sql Error resultset loop", e);
+		}
+		return event;
+	}
 }

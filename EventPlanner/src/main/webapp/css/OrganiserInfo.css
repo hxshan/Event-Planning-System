@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+button:hover{
+	cursor: pointer;
+}
+.user-info{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:fit-content;
+    background-color: rgba(158, 152, 152, 0.452);
+    padding: 2rem;
+    border-radius: 8px;
+}
+.user-pfp-edit{
+    display:flex;
+    flex-direction: column;
+}
+.user-pfp-edit >form{
+    display:flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.user-pfp-edit >form>button{
+    margin-bottom: 1rem;
+}
+
+.profile-pic-input{
+    display: none;
+}
+.imageChange-label{
+    display: inline-block;
+    padding: .5rem 1.2rem;
+    background: rgb(150,7,134);
+    background: linear-gradient(90deg, rgba(150,7,134,1) 0%, rgba(160,0,255,1) 78%);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    user-select: none;
+}
+.submit-btn-img{
+    background: rgb(150,7,134);
+    background: linear-gradient(90deg, rgba(150,7,134,1) 0%, rgba(160,0,255,1) 78%);
+    padding: .5rem 0;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
+.userdetails{
+    width: 100%;   
+}
+.userdetails-form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+.form-group label{
+    font-weight: 700;
+    padding: .5rem 0;
+}
+.form-group input{
+    width: 20rem;
+    padding: 1rem .5rem;
+    border-radius: 8px;
+}
+.submit-btn{
+    width: 20rem;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    border: none;
+    background: rgb(150,7,134);
+    background: linear-gradient(90deg, rgba(150,7,134,1) 0%, rgba(160,0,255,1) 78%);
+    color: white;
+    font-size:1.2rem;
+    margin-bottom: 1rem;
+}

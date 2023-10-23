@@ -6,7 +6,8 @@ public class User {
 	private String Name;
 	private String Email;
 	private String Password;
-	
+	private String ImageId;
+	private String ImageName;
 	
 	
 	
@@ -57,6 +58,30 @@ public class User {
 
 	public void setName(String name) {
 		Name = name;
+	}
+
+
+
+	public String getImageName() {
+		return ImageName;
+	}
+
+
+
+	public void setImageName(String imageName) {
+		ImageName = imageName;
+	}
+
+
+
+	public String getImageId() {
+		return ImageId;
+	}
+
+
+
+	public void setImageId(String imageId) {
+		ImageId = imageId;
 	}
 	
 }
