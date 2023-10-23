@@ -24,4 +24,34 @@
     <servlet-name>RegisterController</servlet-name>
     <url-pattern>/RegisterController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EventController</display-name>
+    <servlet-name>EventController</servlet-name>
+    <servlet-class>com.EventPlanner.Controllers.EventController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EventController</servlet-name>
+    <url-pattern>/EventController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PageRedirectController</display-name>
+    <servlet-name>PageRedirectController</servlet-name>
+    <servlet-class>com.EventPlanner.Controllers.PageRedirectController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PageRedirectController</servlet-name>
+    <url-pattern>/PageRedirectController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditProfileImageController</display-name>
+    <servlet-name>EditProfileImageController</servlet-name>
+    <servlet-class>com.EventPlanner.Controllers.EditProfileImageController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditProfileImageController</servlet-name>
+    <url-pattern>/EditProfileImageController</url-pattern>
+  </servlet-mapping>
 </web-app>

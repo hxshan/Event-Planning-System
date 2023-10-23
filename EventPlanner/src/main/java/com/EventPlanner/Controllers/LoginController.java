@@ -8,11 +8,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.mindrot.jbcrypt.BCrypt;
 
+import com.EventPlanner.Models.Event;
+import com.EventPlanner.Models.EventType;
 import com.EventPlanner.Models.User;
 import com.EventPlanner.Models.Vendor;
+import com.EventPlanner.Services.EventService;
 import com.EventPlanner.Services.UserService;
 import com.EventPlanner.Services.VendorService;
 
@@ -35,19 +39,27 @@ public class LoginController extends HttpServlet {
 			if(passwordMatch) {
 				
 				User user=userservice.getUserDetails(email);
+				EventService eventservice=new EventService();
 				String userType=userservice.getUserTypeById(user.getUserTypeId());
+				HttpSession session=request.getSession();
+				
 				
 				//pass relevant info depending on user type
-				if( userType == "Organiser"){
-					HttpSession session=request.getSession();
+				if( userType.compareToIgnoreCase("Organiser")==0 ){
+					List<Event> Elist=eventservice.getUsersEvents(user.getId());
+					List<EventType> etList=eventservice.getEventTypes();
+						
+					session.setAttribute("etList", etList);
+					session.setAttribute("Elist", Elist);
 					session.setAttribute("User",user);
 					
 				}
-				else if(userType == "Vendor"){
+				else if(userType.compareToIgnoreCase("Vendor") ==0 ){
+					
 					VendorService vendorservice=new VendorService();
-					Vendor vendor= vendorservice.getVendorDetails(email);
-					HttpSession session=request.getSession();
+					Vendor vendor= vendorservice.getVendorDetails(email);		
 					session.setAttribute("User",vendor);
+					
 				}
 				
 				//redirect to page
@@ -55,12 +67,12 @@ public class LoginController extends HttpServlet {
 				requestdispatcher.forward(request, response);
 				
 			}else {
-				response.sendRedirect("Login.jsp?password=false");
+				response.sendRedirect("static/Login.jsp?password=false");
 			}
 			
 		}
 		else {
-			response.sendRedirect("Login.jsp?userExist=false");
+			response.sendRedirect("static/Login.jsp?userExist=false");
 		}
 	}
 

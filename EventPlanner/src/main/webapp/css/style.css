@@ -1,0 +1,378 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+.header{
+    min-height: 100vh;
+    background: black;
+    background-image: linear-gradient(rgba(4,9,30,0.7), rgba(4,9,30,0.7)), url(../assets/images/E5.png);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+nav{
+     
+    display:flex;
+    padding:2% 6%;
+    justify-content: space-between;
+    align-items: right;;
+}
+
+nav img{
+    width: 400px;
+    position: absolute;
+    bottom: 30rem;
+    left: -4rem;
+}
+
+.text-box{
+    width: 90%;
+    color: #fff;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%); 
+    text-align: center;
+}
+
+.text-box h1{
+    font-size: 52px;
+    margin: 10px 0 40px; 
+}
+
+.hero-btn{
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 34px;
+    font-size: 13px;
+    background: transparent;
+    position: relative;
+    cursor: pointer; 
+}
+
+.hero-btn:hover{
+    border: 1px solid #f44336;
+    background: #f44336;
+    transition: 1s;
+}
+nav .fa{
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: black;
+    display: none;
+}
+
+#login-btn .hero-btn{
+    margin-top: 0.8rem;
+    background: #f44336;
+    margin-left: -45%;
+    border: 1px solid #f44336;
+}
+
+#login-btn .hero-btn:hover{
+
+    background: white;
+    color: #f44336;
+}
+
+.header #login-btn i{
+    display: none;
+}
+/*------------header section ends-----------*/
+
+/*-------------body section starts----------*/
+/* Event slider*/
+
+.event {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+  }
+  
+  .event-category {
+    margin-top: 5rem;
+    padding: 0 10vw;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    text-transform: capitalize;
+    color: #f44336;
+    font-weight: 600;
+  }
+  
+  .event-container {
+    padding: 0 10vw;
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+
+  .event-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .event-card {
+    flex: 0 0 auto;
+    width: 250px;
+    height: 450px;
+    margin-right: 40px;
+  }
+  
+  .event-image {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+  }
+  
+  .event-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card-btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    width: 90%;
+    text-transform: capitalize;
+    border: none;
+    outline: none;
+    background: #fff;
+    border-radius: 5px;
+    transition: 0.5s;
+    cursor: pointer;
+    opacity: 0;
+  }
+  
+  .event-card:hover .card-btn {
+    opacity: 1;
+  }
+  
+  .card-btn:hover {
+    background: #ff7d7d;
+    color: #fff;
+  }
+
+  .event-info {
+    width: 100%;
+    height: 100px;
+    padding-top: 10px;
+  }
+  
+  .event-brand {
+    text-transform: uppercase;
+  }
+
+  .pre-btn,
+.nxt-btn {
+  border: none;
+  width: 10vw;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+  cursor: pointer;
+  z-index: 8;
+}
+
+.pre-btn {
+  left: 0;
+  transform: rotate(180deg);
+}
+
+.nxt-btn {
+  right: 0;
+}
+
+.pre-btn img,
+.nxt-btn img {
+  opacity: 0.2;
+}
+
+.pre-btn:hover img,
+.nxt-btn:hover img {
+  opacity: 1;
+}
+
+/*body topic starts*/
+
+.topic h2{
+  font-size: 35px;
+  text-transform: capitalize;
+  color: #f44336;
+  padding-top: 5rem;
+  padding-bottom: 3rem ;
+  text-decoration: none;
+ text-align:center ;
+}
+
+.topic p{
+  font-size: 25px;
+  text-align: center;
+  color: black;
+  text-transform: capitalize;
+  font-weight: 500;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 3rem
+
+}
+
+
+
+/*news and event section starts*/
+
+.heading h1{
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: #f44336;
+    padding-top: 7rem;
+    padding-bottom: 4rem ;
+    text-decoration: none;
+    margin-left: 40%;
+}
+
+
+.discount {
+    background-image: url(images/off.png);
+    background-position: center;
+    background-size: cover;
+     min-height: 100vh;
+     position: relative;
+}
+  
+
+
+
+
+/*------------footer section starts-----------*/
+.footer {
+    background-color: #131E3A;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.footer .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit ,minmax(30rem, 1fr));
+    gap: 2rem;
+    padding-bottom: 0rem;
+    padding-top: 2rem;
+}
+
+.footer .box-container .box h3{
+    color: white;
+    font-size: 20px;
+    padding-bottom: 2rem ;
+    padding-left: 2rem;
+}
+
+.footer .box-container .box a{
+    color: whitesmoke;
+    font-size:.8rem ;
+    padding-bottom: 1rem;
+    display:block;
+    padding-left: 2rem;
+    text-decoration: none;
+}
+
+.footer .box-container .box a i{
+    color: #f44336;
+    padding-right: 0.5rem;
+    transition: .2s linear;
+}
+
+.footer .box-container .box a:hover i{
+    padding-right: 2rem
+}
+
+.footer .credit{
+    text-align: center;
+    padding-top: 3rem;
+    margin-top: 3rem;
+    border-top: .01rem solid #fff;
+    margin-bottom: 2rem;
+    padding-bottom: 3rem;
+    color: #fff;
+}
+/*-------------footer section ends---------------*/
+
+
+
+
+
+
+
+
+
+
+
+/*--------media section starts---------*/
+@media(max-width: 800px){
+    .text-box h1{
+        font-size: 19px;
+        margin: 10px 0 40px; 
+    }
+
+    .nav-links ul li{
+        display: block;
+        font-size: 8px;    
+        position: inherit;
+        text-align: left;
+        margin: 1rem;
+    }
+
+    .nav-links{
+        position: absolute;
+        background: #f44336;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: -200px;
+        text-align: left;
+        z-index: 2;
+        transition: 1s;
+    }
+
+    nav .fa{
+        display: block;
+        color: #fff;
+        margin: 10px;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .nav-links ul{
+        padding: 15px;
+    }
+
+    nav.fa{
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: white;
+        display: block;
+        transition: .2s linear;
+
+    }
+
+    .header img{
+
+        margin-left: -90px;
+        margin-bottom: 65px;
+    }
+    
+}
