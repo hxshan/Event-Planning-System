@@ -13,6 +13,9 @@ public class Event {
 	private int ownerId;
 	
 	
+	public Event() {
+		
+	}
 	public Event(int Id,String name,int typeid,LocalDate startdate2,LocalDate enddate2,int ownerid) {
 		this.id=Id;
 		this.name=name;

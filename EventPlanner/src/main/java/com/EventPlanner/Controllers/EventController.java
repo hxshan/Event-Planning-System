@@ -58,6 +58,9 @@ public class EventController extends HttpServlet {
 			response.sendRedirect("./EventController");
 			
 		}else if(triggerType.equalsIgnoreCase("EditEvent")) {
+			int eventId =Integer.parseInt( request.getParameter("eventId"));
+			int userid=Integer.parseInt(request.getParameter("userId"));
+		
 			
 			
 			

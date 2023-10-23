@@ -1,0 +1,122 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+button:hover{
+    cursor: pointer;
+}
+.event-section{
+    padding-bottom: 2rem;
+}
+.event-hero{
+    background-image: url("../assets/images/event.jpg");
+    width: 100%;
+    min-height:350px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    position: relative;
+}
+.event-hero h1{
+    position: absolute;
+    top:2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;      
+}
+.event-hero h2{
+    position: absolute;
+    bottom:2rem;
+    left: 1rem;
+}
+.description{
+    padding: 1rem 2rem;
+}
+.description p{
+    margin-top: .5rem;
+    padding-left: .5rem;
+    max-width:800px ;
+}
+.event-services-sec{
+    padding: 1rem 2rem;
+}
+.event-services{
+    width: 100%;
+    padding-left: 1rem;
+}
+.service{
+    background:blanchedalmond;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+    border-radius: 8px;
+}
+.service-details{
+    display: flex;
+    gap: 1rem;
+}
+.service-data{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: .5rem;
+}
+.service-data-vendor{
+    display: flex;
+    gap: 1rem;
+}
+.service-image{
+    background-color: aquamarine;
+    min-height:100%;
+    width:5.5rem;
+    border-radius: 8px;
+}
+.service-image img{
+    height: 100%;
+    width: 100%;
+}
+.status{
+    background-color: aliceblue;
+    padding: .4rem .7rem;
+    border-radius: 16px;
+}
+.service-btns{
+    display: flex;
+    margin-top: .5rem;
+    justify-content: space-between;
+}
+.service-btns button{
+    border: none;
+    background: transparent;
+}
+.new-service-form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.add-Service-btn{
+    border-radius: 8px;
+    border: none;
+    background: rgb(150,7,134);
+    background: linear-gradient(90deg, rgba(150,7,134,1) 0%, rgba(160,0,255,1) 78%);
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 1rem 0;
+    width: 18rem;
+}
+.add-Service-btn img{
+    height: 100%;
+    width: 100%;
+}
+@media screen and (min-width:1023px){
+.event-section{
+    padding-left: 11rem;
+    padding-right: 1rem;
+}
+
+}

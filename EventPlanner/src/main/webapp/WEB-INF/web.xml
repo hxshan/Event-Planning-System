@@ -44,4 +44,14 @@
     <servlet-name>PageRedirectController</servlet-name>
     <url-pattern>/PageRedirectController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditProfileImageController</display-name>
+    <servlet-name>EditProfileImageController</servlet-name>
+    <servlet-class>com.EventPlanner.Controllers.EditProfileImageController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditProfileImageController</servlet-name>
+    <url-pattern>/EditProfileImageController</url-pattern>
+  </servlet-mapping>
 </web-app>
