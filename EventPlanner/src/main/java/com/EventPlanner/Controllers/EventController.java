@@ -23,8 +23,11 @@ public class EventController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/Dashboard.jsp");
-		requestdispatcher.forward(request, response);
+
+		
+			RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/Dashboard.jsp");
+			requestdispatcher.forward(request, response);
+		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,7 +36,9 @@ public class EventController extends HttpServlet {
 		EventService eventservice=new EventService();
 		HttpSession session=request.getSession();
 		//List<EventType> et = eventservice.getEventTypes();
-	
+		
+		
+		/*=======================================ADDING NEW EVENT==========================================*/
 		if(triggerType.equalsIgnoreCase("AddEvent")) {
 			
 			String eventName=request.getParameter("EventName").trim();
@@ -57,14 +62,24 @@ public class EventController extends HttpServlet {
 			requestdispatcher.forward(request, response);*/
 			response.sendRedirect("./EventController");
 			
-		}else if(triggerType.equalsIgnoreCase("EditEvent")) {
+		}
+		
+		/*=======================================EDITING EVENT==========================================*/
+		else if(triggerType.equalsIgnoreCase("EditEvent")) {
 			int eventId =Integer.parseInt( request.getParameter("eventId"));
 			int userid=Integer.parseInt(request.getParameter("userId"));
+			
+			Event event = eventservice.getEventDetails(eventId);
+			session.setAttribute("currentEvent", event);
+			
+			RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/EventDetails.jsp");
+			requestdispatcher.forward(request, response);
+			
+			
+		}
 		
-			
-			
-			
-		}else if(triggerType.equalsIgnoreCase("DeleteEvent")) {
+		/*=======================================DELETING EVENT==========================================*/
+		else if(triggerType.equalsIgnoreCase("DeleteEvent")) {
 			
 			int eventId =Integer.parseInt( request.getParameter("eventId"));
 			int userid=Integer.parseInt(request.getParameter("userId"));

@@ -43,138 +43,55 @@
     </header> -->
     <%@ include file="NavBar.jsp" %>
     <main>
-         <!-- <div class="nav-background" id="nav-background">       
-            <div class="nav-bar slideRight" id="nav-bar">
-                <button type="button" class="nav-close" id="nav-close" onclick="closeNavbar()">
-                    <img src="assets/icons/Multiply.png" alt="Close">
-                </button>
-
-                <div class="nav-item" id="Dashboard">
-                    <form action="./PageRedirectController" method="get">
-                    <input type="hidden" name="page" value="dashboard">
-                        <button class="nav-link">Dashboard</button>
-                    </form>
-                   
-                </div>
-                <div class="nav-item" id="AllEvents">
-                    <form action="" method="post">
-                        <button class="nav-link">All Events</button>
-                    </form>
-                </div>
-                <div class="nav-item" id="Something">
-                    <form action="" method="post">
-                        <button class="nav-link">Something</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div id="Modal" class="modal">
-            <div class="modal-content slideDown">
-                <div class="closeBtn-con">
-                    <button name="button" value="closeEventForm" id="closeEventForm" class="eventClose" onclick="closeEventForm()">
-                        <img src="assets/icons/Multiply.png" alt="Close">
-                    </button>
-                </div>
-                <div class="modal-header">
-                   <h2>New Event</h2>
-               </div>
-                <div class="modal-body">
-                     <form class="addEvent-form" action="./EventController" method="post">
-                         <input type="hidden" name="triggerType" value="AddEvent"/>
-                         <input type="hidden" value="${User.getId()}" name="userId">
-                       
-                         <div class="form-row">
-                               <label for="EvenName">Event Name</label>
-                               <input id="EvenName" name="EventName" type="text" />
-                         </div>
-   
-                         <div class="form-row">
-                               <label for="startDate">Start Date</label>
-                               <input id="startDate" name="startDate" type="date" />
-                         </div>
-   
-                             <div class="form-row">
-                               <label for="endDate">End Date</label>
-                               <input id="endDate" name="endDate" type="date" />
-                         </div>
-                 
-                         <div class="form-row">
-                               <label for="eventType">Event Type</label>
-                               <select class="eventType-select" name="eventType" id="eventType">
-                                   <option value="NULL">Select Type</option>
-                  
-                                 <c:forEach var="eventType" items="${etList}">
-                                         <option value="${eventType.getId()}">${eventType.getType()} </option>
-                                     </c:forEach>
-                 
-                               </select>
-                          </div>
-                          <input type="submit" class="button good" value="Save" />
-                     </form>
-                 </div>
-            </div>
-        </div>
-        
-        <div class="nav-desktop">
-            <div class="logo">
-                LOGO    
-            </div>
-            <div class="nav-desktop-item">
-                <form action="./PageRedirectController" method="get">
-                	<input type="hidden" name="page" value="dashboard">
-                    <button class="nav-link">Dashboard</button>
-                </form>
-            </div>
-            <div class="nav-desktop-item">
-                <form action="" method="post">
-                    <button class="nav-link">All Events</button>
-                </form>
-             </div>
-             <div class="nav-desktop-item">
-                    <form action="" method="post">
-                        <button class="nav-link">Something</button>
-                    </form>
-             </div>
-        </div>-->
         <%@ include file="NavMenus.jsp" %>
         
         <div class="Dashboard-content">
             <div class="recentEvents-con" id="recentEvents-con">
                 <h2>Dashboard</h2>
-                <c:forEach var="event" items="${Elist}">
-                <div class="event">
-                    <h3>${event.getName()}</h3>
-                    <div class="event-bottom">
-                        <div class="eventType">
-                            <img class="Event-icons" src="assets/icons/Event-star.png" alt="">
-                            <p>Birthday Party</p> 
-                        </div>
-                        <div class="event-startdate">
-                            <img class="Event-icons" src="assets/icons/Time.png" alt="">
-                            <p>${event.getStartdate()}</p> 
-                        </div>
-                    </div>
-                 	<div class="event-btns-con">
-                        	<form action="./EventController" method="post">
-                            	<input type="hidden" name="triggerType" value="EditEvent"/>
-                            	<input type="hidden" name="eventId" value="${event.getId()}"/>
-                            	<input type="hidden" name="userId" value="${User.getId()}"/>
-                            	<button class="event-buttons" type="submit">
-                                	<img src="assets/icons/view more btn.png" alt="">
-                            	</button>
-                        	</form>
-                        	<form action="./EventController" method="post">
-                            	<input type="hidden" name="triggerType" value="DeleteEvent"/>
-                            	<input type="hidden" name="eventId" value="${event.getId()}"/>
-                            	<input type="hidden" name="userId" value="${User.getId()}"/>
-                            	<button class="event-buttons" type="submit">
-                                	<img src="assets/icons/Delete btn.png" alt="">
-                           	 	</button>
-                        	</form>
-                    	</div>
-                </div>
-                </c:forEach>
+               	<c:choose>
+    				<c:when test="${empty Elist}">      
+        				<div class="event-empty">
+                    		<img src="assets/images/no-event.png" alt="no-event">
+                		</div>
+    				</c:when>
+    				<c:otherwise>     
+        				<c:forEach var="event" items="${Elist}">
+                			<div class="event">
+                    			<h3>${event.getName()}</h3>
+                   			 <div class="event-bottom">
+                        			<div class="eventType">
+                   			        			 <img class="Event-icons" src="assets/icons/Event-star.png" alt="">
+                            		
+                            		<p>Some text goes here</p> 
+                       			 </div>
+                        			<div class="event-startdate">
+                            			<img class="Event-icons" src="assets/icons/Time.png" alt="">
+                            			<p>${event.getStartdate()}</p> 
+                    			    </div>
+                    			</div>
+                 				<div class="event-btns-con">
+                    			    				<form action="./EventController" method="post">
+                            				<input type="hidden" name="triggerType" value="EditEvent"/>
+                            				<input type="hidden" name="eventId" value="${event.getId()}"/>
+                            				<input type="hidden" name="userId" value="${User.getId()}"/>
+                            				<button class="event-buttons" type="submit">
+                                				<img src="assets/icons/view more btn.png" alt="">
+                            				</button>
+                        				</form>
+                        				<form action="./EventController" method="post">
+                            				<input type="hidden" name="triggerType" value="DeleteEvent"/>
+                            				<input type="hidden" name="eventId" value="${event.getId()}"/>
+                            				<input type="hidden" name="userId" value="${User.getId()}"/>
+                            				<button class="event-buttons" type="submit">
+                                				<img src="assets/icons/Delete btn.png" alt="">
+                           	 				</button>
+                        				</form>
+                    				</div>
+                			</div>
+                		</c:forEach>
+    				</c:otherwise>
+				</c:choose>
+
             </div>
             <div class="dashboard-bottom">
                 <div class="Report-con" id="Report-con">

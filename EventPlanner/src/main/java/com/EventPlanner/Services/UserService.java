@@ -13,13 +13,14 @@ public class UserService {
 		public void addUser(User user) {
 			Connection con = DBConnectionUtil.getDBConnection();
 			
-			String sql="insert into users(id,email,name,password,user_type_id)values(NULL,?,?,?,?);";
+			String sql="insert into users(id,email,PhoneNumber,name,password,user_type_id)values(NULL,?,?,?,?,?);";
 			try {
 				PreparedStatement stmt = con.prepareStatement(sql);
 				stmt.setString(1,user.getEmail());	
-				stmt.setString(2,user.getName());
-				stmt.setString(3,user.getPassword());	
-				stmt.setInt(4,user.getUserTypeId());
+				stmt.setString(2, user.getPhoneNumber());
+				stmt.setString(3,user.getName());
+				stmt.setString(4,user.getPassword());	
+				stmt.setInt(5,user.getUserTypeId());
 				stmt.executeUpdate();
 				stmt.close();
 				
@@ -32,6 +33,25 @@ public class UserService {
 				DBConnectionUtil.closeConnection(con);
 			}
 				
+		}
+		
+		public void updateUser(int userId,String name,String email,String phoneNum) {
+			Connection con = DBConnectionUtil.getDBConnection();
+			String sql="Update users set name=?,email=?,PhoneNumber=? where id=?;";
+			try {
+				PreparedStatement stmt = con.prepareStatement(sql);
+				stmt.setString(1, name);
+				stmt.setString(2,email);
+				stmt.setString(3,phoneNum);
+				stmt.setInt(4,userId);
+				stmt.executeUpdate();
+				stmt.close();
+			} catch (SQLException e) {
+				ErrorLoggerUtil.logError("UserService(updateUser)","SQL ERROR: ", e);
+				
+			}
+			
+			
 		}
 		
 		public boolean userExists(String email) {
@@ -75,6 +95,7 @@ public class UserService {
 					user.setId(rs.getInt("id"));
 					user.setName(rs.getString("name"));
 					user.setEmail(rs.getString("email"));
+					user.setPhoneNumber(rs.getString("PhoneNumber"));
 					user.setUserTypeId(rs.getInt("user_type_id"));
 					user.setImageId(rs.getString("imageId"));
 					user.setImageName(rs.getString("imageName"));
@@ -108,6 +129,7 @@ public class UserService {
 					user.setId(rs.getInt("id"));
 					user.setName(rs.getString("name"));
 					user.setEmail(rs.getString("email"));
+					user.setPhoneNumber(rs.getString("PhoneNumber"));
 					user.setUserTypeId(rs.getInt("user_type_id"));
 					user.setImageId(rs.getString("imageId"));
 					user.setImageName(rs.getString("imageName"));
@@ -168,7 +190,7 @@ public class UserService {
 				stmt.close();
 			} catch (SQLException e) { 
 				ErrorLoggerUtil.logError("UserService(getUserTypeId)","SQL ERROR: ", e);
-				e.printStackTrace();
+				//e.printStackTrace();
 				//logger.error("Error: ",e);
 			}
 			finally{
@@ -197,7 +219,7 @@ public class UserService {
 				stmt.close();
 			} catch (SQLException e) { 
 				ErrorLoggerUtil.logError("UserService(getUserTypeById)","SQL ERROR: ", e);
-				e.printStackTrace();
+				//e.printStackTrace();
 				//logger.error("Error: ",e);
 			}
 			finally{

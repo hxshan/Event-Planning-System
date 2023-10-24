@@ -20,7 +20,7 @@ public class EventService {
 		
 		
 		Connection con=DBConnectionUtil.getDBConnection();
-		String sql="insert into event(name,type_id,startDate,endDate,ownerId) values(?,?,?,?,?);";
+		String sql="insert into event(name,type_id,startDate,endDate,owner_id) values(?,?,?,?,?);";
 		
 		try {
 			PreparedStatement stmt=con.prepareStatement(sql);
@@ -30,8 +30,11 @@ public class EventService {
 			stmt.setObject(4,event.getEnddate());
 			stmt.setInt(5, event.getOwnerId());
 			stmt.executeUpdate();
+			stmt.close();
 		} catch (SQLException e) {
 			ErrorLoggerUtil.logError("EventService(addEvent)", "Sql Error", e);
+		}finally {
+			DBConnectionUtil.closeConnection(con);
 		}
 		
 	}
@@ -42,41 +45,48 @@ public class EventService {
 			PreparedStatement stmt=con.prepareStatement(sql);
 			stmt.setInt(1,eventid);
 			stmt.executeUpdate();
+			stmt.close();
 			
 		} catch (SQLException e) {
 			
 			ErrorLoggerUtil.logError("EventService(DeleteEvent)", "Sql Error", e);
+		}finally {
+			DBConnectionUtil.closeConnection(con);
 		}
 		
 	}
 	
 	public List<Event> getUsersEvents(int userid){
 		Connection con = DBConnectionUtil.getDBConnection();		
-		String sql="select * from event where ownerId=?";
+		String sql="select * from event where owner_id=?";
 		ResultSet rs = null;
 		try {
 			PreparedStatement stmt=con.prepareStatement(sql);
 			stmt.setInt(1,userid);
-			rs=stmt.executeQuery();		
+			rs=stmt.executeQuery();
 		} catch (SQLException e) {
 			
 			ErrorLoggerUtil.logError("EventService(getUsersEvents)", "Sql Error prepared stmt", e);
 		}
 		List<Event> Elist= new ArrayList<Event>();
 		try {
-			while(rs.next()) {
-				int Id=rs.getInt("id");
-				String ename=rs.getString("name");
-				int typeid=rs.getInt("type_id");
-				LocalDate startDate=rs.getDate("startDate").toLocalDate();
-				LocalDate endDate=rs.getDate("endDate").toLocalDate();
-				int ownerid=rs.getInt("ownerId");
+			if(rs != null) {
+				while(rs.next()) {
+					int Id=rs.getInt("id");
+					String ename=rs.getString("name");
+					int typeid=rs.getInt("type_id");
+					LocalDate startDate=rs.getDate("startDate").toLocalDate();
+					LocalDate endDate=rs.getDate("endDate").toLocalDate();
+					int ownerid=rs.getInt("owner_id");
 				
-				Elist.add(new Event(Id,ename,typeid,startDate,endDate,ownerid));
+					Elist.add(new Event(Id,ename,typeid,startDate,endDate,ownerid));
+				}
 			}
 		} catch (SQLException e) {
 			
 			ErrorLoggerUtil.logError("EventService(getUsersEvents)", "Sql Error resultset loop", e);
+		}finally {
+			DBConnectionUtil.closeConnection(con);
 		}
 		return Elist;
 		
@@ -99,12 +109,40 @@ public class EventService {
 			while(rs.next()) {	
 				Etypelist.add(new EventType(rs.getInt("id"),rs.getString("type")));
 			}
+			
 		} catch (SQLException e) {
 			
 			ErrorLoggerUtil.logError("EventService(getEventTypes)", "Sql Error", e);
+		}finally {
+			
+			DBConnectionUtil.closeConnection(con);
 		}
 		
 		return Etypelist;
+	}
+	
+	public String getEventTypeById(int typeid) {
+		Connection con = DBConnectionUtil.getDBConnection();		
+		String sql="select type from event_types where id=?;";
+		ResultSet rs = null;
+		String type="";
+		try {
+			PreparedStatement stmt= con.prepareStatement(sql);
+			stmt.setInt(1, typeid);
+			rs=stmt.executeQuery();
+			if(rs.next()) {
+				type=rs.getString("type");
+			}
+			stmt.close();
+			rs.close();
+		} catch (SQLException e) {
+			
+			ErrorLoggerUtil.logError("EventService(getEventTypeById)", "Sql Error", e);
+		}finally {
+			
+			DBConnectionUtil.closeConnection(con);
+		}
+		return type;
 	}
 	
 	public Event getEventDetails(int eventId) {
@@ -127,8 +165,9 @@ public class EventService {
 				event.setType_id(rs.getInt("type_id"));
 				event.setStartdate(rs.getDate("startDate").toLocalDate());
 				event.setEnddate(rs.getDate("endDate").toLocalDate());
-				event.setOwnerId(rs.getInt("ownerId"));
+				event.setOwnerId(rs.getInt("owner_id"));
 			}
+		
 		} catch (SQLException e) {
 			ErrorLoggerUtil.logError("EventService(getUsersEvents)", "Sql Error resultset loop", e);
 		}

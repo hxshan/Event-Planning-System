@@ -2,6 +2,10 @@ package com.EventPlanner.Controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
+
+import com.EventPlanner.Models.Service;
+import com.EventPlanner.Services.AddVendoService_Service;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -13,27 +17,28 @@ import jakarta.servlet.http.HttpServletResponse;
 public class ServiceController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
+        requestDispatcher.include(request, response);
+	}
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-			response.setContentType("text/html");
-			PrintWriter out = response.getWriter();
+			/*response.setContentType("text/html");
+			PrintWriter out = response.getWriter();*/
 		
-		String a1=request.getParameter("Servicename").trim();
-		String a2=request.getParameter("discription").trim();
-		String a3=request.getParameter("price").trim(); 
+		String Servicename=request.getParameter("Servicename").trim();
+		String discription=request.getParameter("discription").trim();
+		BigDecimal price= new BigDecimal(request.getParameter("price").trim()); 
+		int VendorId=Integer.parseInt(request.getParameter("userId")) ;
+		AddVendoService_Service Vs = new AddVendoService_Service();
+		Service service = new Service(1,VendorId,Servicename,discription,price);
 		
-		if(a1.isBlank()&& a2.isBlank()&& a3.isBlank()) {
-			response.setContentType("text/html");
-			out.print("<script type=\"text/javascript\">");
-			out.print("alert('Please Enter Service Details!')");
-			out.print("</script>");
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("");
-            requestDispatcher.include(request, response);
-		}else {
-			 response.setContentType("text/html");  
-             out.println("<script type=\"text/javascript\">");  
-             out.println("alert('Success! ... Event Details Added To Database!');");  
-             out.println("</script>");
-		}
+		Vs.AddService(service);
+		
+		response.sendRedirect("./ServiceController");
+		
 
 		
 	}

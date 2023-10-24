@@ -8,9 +8,6 @@ main{
     flex-direction: column;
     align-items: center;
 }
-button:hover{
-	cursor: pointer;
-}
 .user-info{
     display:flex;
     flex-direction: column;
@@ -20,9 +17,22 @@ button:hover{
     padding: 2rem;
     border-radius: 8px;
 }
+.user-picture{
+    width: 7rem;
+    height: 7rem;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.user-picture img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
 .user-pfp-edit{
     display:flex;
     flex-direction: column;
+    align-items: center;
 }
 .user-pfp-edit >form{
     display:flex;
@@ -31,6 +41,7 @@ button:hover{
 }
 .user-pfp-edit >form>button{
     margin-bottom: 1rem;
+    width: 10rem;
 }
 
 .profile-pic-input{

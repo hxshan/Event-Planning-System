@@ -18,7 +18,7 @@
         </button>
         <div class="user-pfp">
             <button name="button" value="AddEvent" id="addEventBtn" class="addEventBtn-desk" onclick="openEventForm()">
-                <img src="assets/icons/Plus.png" alt="Add event">
+                <img src="assets/icons/Add-Btn.png" alt="Add event">
                 <p>Add Event
                 </p>             
             </button>

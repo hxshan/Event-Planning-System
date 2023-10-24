@@ -2,28 +2,36 @@ package com.EventPlanner.Models;
 
 import java.math.BigDecimal;
 
-public class Service extends User {
+public class Service {
+		private int Id;
 		private int ServiceTypeId;
+		private int vendorId;
 		private  String ServiceName;
 		private String Description;
 		private BigDecimal price;
 		
 		
 		
-		public Service(int typeid,String name,String email, String PhoneNumber,String pwd,int ServiceTypeId, String ServiceName,String Description, BigDecimal price) {
+		public Service(int ServiceTypeId, int vendorId,String ServiceName,String Description, BigDecimal price) {
 			
-			super(typeid, name, email,PhoneNumber, pwd);
 			this.ServiceTypeId = ServiceTypeId;
+			this.vendorId=vendorId;
 			this.ServiceName = ServiceName;
 			this.Description = Description;
 			this.price = price;
 		}
 		
 		
-		public Service() {
-			super();
+		public Service(int id,int ServiceTypeId, int vendorId,String ServiceName,String Description, BigDecimal price) {
 			
+			this.Id=id;
+			this.ServiceTypeId = ServiceTypeId;
+			this.vendorId=vendorId;
+			this.ServiceName = ServiceName;
+			this.Description = Description;
+			this.price = price;
 		}
+		
 
 
 		public int getServiceTypeId() {
@@ -63,6 +71,26 @@ public class Service extends User {
 
 		public void setPrice(BigDecimal price) {
 			this.price = price;
+		}
+
+
+		public int getVendorId() {
+			return vendorId;
+		}
+
+
+		public void setVendorId(int vendorId) {
+			this.vendorId = vendorId;
+		}
+
+
+		public int getId() {
+			return Id;
+		}
+
+
+		public void setId(int id) {
+			Id = id;
 		}
 		
 		
