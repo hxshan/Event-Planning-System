@@ -27,7 +27,7 @@ public class RegisterController extends HttpServlet {
 		String hashpwd=BCrypt.hashpw(pwd,BCrypt.gensalt());
 		String userType=request.getParameter("userType").trim();
 		
-		System.out.print(userType);
+		
 		if(userType.equalsIgnoreCase("User")) {
 			UserService userservice = new UserService();
 			User user = new User(userservice.getUserTypeId("Organiser"),name, email, PhoneNumber, hashpwd);

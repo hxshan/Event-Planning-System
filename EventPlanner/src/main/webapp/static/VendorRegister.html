@@ -4,14 +4,15 @@
   <head>
     <meta charset="UTF-8">
     <title> Registration Form  </title>
-    <link rel="stylesheet" href="vendorRegistration.css">
+    <link rel="stylesheet"  type="text/css" href="../css/vendorRegistration.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="../scripts/FromValidations.js"></script>
    </head>
 <body>
   <div class="container">
     <div class="title">Vendor Registration</div>
     <div class="content">
-      <form action="../RegisterController" method="post">
+      <form action="../RegisterController"  method="post" onsubmit="return validateVendorRegForm()">
         <div class="user-details">
           <div class="input-box">
             <span class="details">Full Name</span>
@@ -37,8 +38,8 @@
             <span class="details">Confirm Password</span>
             <input type="password" placeholder="Confirm your password" required>
           </div>
-    </div>
-            <div class="input-box">
+    	</div>
+        <div class="input-box">
               <span class="details">Description</span>
               <input type="text" class="box2" name="description"  placeholder="Description" required>
           </div><br> 

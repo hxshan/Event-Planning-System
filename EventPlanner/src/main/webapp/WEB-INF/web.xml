@@ -54,4 +54,25 @@
     <servlet-name>EditProfileImageController</servlet-name>
     <url-pattern>/EditProfileImageController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateUserController</display-name>
+    <servlet-name>UpdateUserController</servlet-name>
+    <servlet-class>com.EventPlanner.Controllers.UpdateUserController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateUserController</servlet-name>
+    <url-pattern>/UpdateUserController</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>ServiceController</display-name>
+    <servlet-name>ServiceController</servlet-name>
+    <servlet-class>com.EventPlanner.Controllers.ServiceController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServiceController</servlet-name>
+    <url-pattern>/ServiceController</url-pattern>
+  </servlet-mapping>
 </web-app>

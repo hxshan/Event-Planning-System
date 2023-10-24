@@ -8,7 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -48,7 +50,6 @@ public class LoginController extends HttpServlet {
 				if( userType.compareToIgnoreCase("Organiser")==0 ){
 					List<Event> Elist=eventservice.getUsersEvents(user.getId());
 					List<EventType> etList=eventservice.getEventTypes();
-						
 					session.setAttribute("etList", etList);
 					session.setAttribute("Elist", Elist);
 					session.setAttribute("User",user);
@@ -63,7 +64,7 @@ public class LoginController extends HttpServlet {
 				}
 				
 				//redirect to page
-				RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/Dashboard.jsp");
+				RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/testVendor.jsp");
 				requestdispatcher.forward(request, response);
 				
 			}else {

@@ -1,0 +1,78 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.allservices-sec{
+    width: 100%;
+    padding: 1rem 1rem;
+}
+.serachbar >form{
+    display: flex;
+    flex-direction: row;
+}
+.search-field {
+    width: 100%;
+    padding: 10px 35px 10px 15px;
+    border: 1px solid purple;
+    border-radius: 100px;
+    background-color: #e7e3e3;
+    outline: none;
+  }
+  
+.search-button {
+    padding: 0 10px;
+    background: #ccc;
+    border: 1px solid purple;
+    outline: none;
+    margin-left: -33px;
+    border-radius: 0 100px 100px 0; 
+}
+.search-button:hover{
+    cursor:pointer;
+    background:#aaa;
+}
+.services-con{
+    margin-top: 1rem;
+}
+.service-card{
+    margin-top: 1.5rem;
+    height: 11rem;
+    width: 100%;
+    background-color: #aaa;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.card-img{
+    height: 100%;
+    width: 9rem;
+}
+.card-img img{
+    height: 100%;
+    width: 100%;
+}
+.card-info{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.car-info-bottom{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.car-info-bottom p{
+    width: 65%;
+}
+@media screen and (min-width:1023px){
+    .allservices-sec{
+        padding-left: 11rem;
+        padding-right:5vw;
+    }
+}
