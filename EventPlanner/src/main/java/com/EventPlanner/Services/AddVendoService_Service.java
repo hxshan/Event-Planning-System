@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.EventPlanner.Models.Service;
 
+
 import com.EventPlanner.Utils.DBConnectionUtil;
 import com.mysql.cj.protocol.Resultset;
 import com.mysql.cj.x.protobuf.MysqlxSql.StmtExecute;
@@ -21,14 +22,15 @@ public class AddVendoService_Service  {
 	public void AddService(Service service) {
 		Connection con = DBConnectionUtil.getDBConnection();
 		
-		String sql= "insert into service (id,service_type_id,vendor_id,name,description,price) values (NULL,1,?,?,?,?); ";
+		String sql= "insert into service (service_type_id,vendor_id,name,description,price) values (?,?,?,?,?); ";
 			
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, service.getVendorId());
-			pstmt.setString(2, service.getServiceName());
-			pstmt.setString(3, service.getDescription());
-			pstmt.setBigDecimal(4, service.getPrice());
+			
+			pstmt.setInt(1,service.getTypeId());			pstmt.setInt(2, service.getVendorId());
+			pstmt.setString(3, service.getServiceName());
+			pstmt.setString(4, service.getDescription());
+			pstmt.setBigDecimal(5, service.getPrice());
 			pstmt.executeUpdate();
 			pstmt.close();
 			

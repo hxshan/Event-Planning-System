@@ -7,36 +7,53 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/AddService.css">
+<title>Add Service</title>
 </head>
 <body>
+<div class="formbold-main-wrapper">
+    
+    <div class="formbold-form-wrapper">
 	<form action="./ServiceController" method="post">
 		<input type="hidden" name="triggerType" value="AddService"/>
     	<input type="hidden" name="userId" value="${User.getId()}"/>
-     <div class="form-row">
-          <label for="EvenName">Service Name</label>
-          <input id="EvenName" name="Servicename" type="text" />
-	</div>
-	<div class="form-row">
-          <label for="EvenName">Description</label>
-          <input id="EvenName" name="discription" type="text" />
-	</div>
-	<div class="form-row">
-          <label for="EvenName">Price</label>
-          <input id="EvenName" name="price" type="text" />
-	</div>
+     <div class="formbold-mb-5">
+          <label for="vendor" class="formbold-form-label">
+            Providing Service Name
+          </label>
+          <input type="text" name="Servicename" id="vendor" placeholder="Your Service Name" class="formbold-form-input"/>
+        </div>
+	
+	<div class="formbold-mb-5">
+            <label for="vendor" class="formbold-form-label">
+              Service Description
+            </label>
+            <input type="text" name="discription" id="vendor" placeholder="Service Description" class="formbold-form-input"/>
+          </div>
+	 <div class="formbold-mb-5">
+            <label for="vendor" class="formbold-form-label">
+              Price
+            </label>
+            <input type="number" name="guest" id="vendor"placeholder="Price"class="formbold-form-input"/>
+          </div>
+   <div class="formbold-mb-5">
 	<select class="eventType-select" name="TypeId"  id="eventType">
          <option value="NULL">Select Type</option>
+        
+        
                   
          <c:forEach var="ServiceType" items="${stypeList}">
               <option value="${ServiceType.getServiceId()}">${ServiceType.getType()} </option>
               </c:forEach>          
    </select>
-	
-    <button class="event-buttons" type="submit">
+   </div>
+	<div>
+    <button class="formbold-btn" type="submit">
        Save
      </button>
+     </div>
  </form>
+ </div>
+ </div>
 </body>
 </html>

@@ -104,10 +104,11 @@ public class VendorService extends UserService{
 			while (rs.next()) {
 			
 				 int id =  ( rs.getInt("id"));
+				 String Type = (rs.getString("type"));
 				String Description =(rs.getString("description"));
-				String Type = (rs.getString("type"));
 				
-				StypeList.add(new ServiceType(id,Description,Type));
+				
+				StypeList.add(new ServiceType(id,Type,Description));
 			}
 		} catch (SQLException e) {
 			

@@ -44,11 +44,11 @@ public class ServiceController extends HttpServlet {
 		int VendorId=Integer.parseInt(request.getParameter("userId")) ;
 		int TypeId=Integer.parseInt(request.getParameter("TypeId")) ;
 		
-		String Servicename=request.getParameter("Servicename").trim();
-		String discription=request.getParameter("discription").trim();
-		BigDecimal price= new BigDecimal(request.getParameter("price").trim()); 
+		String Servicename=request.getParameter("Servicename");
+		String description=request.getParameter("description");
+		BigDecimal price= new BigDecimal(request.getParameter("price")); 
 		
-		Service service = new Service(1,VendorId,TypeId,Servicename,discription,price);
+		Service service = new Service(2,VendorId,TypeId,Servicename,description,price);
 		
 		
 		addvendorService.AddService(service);
