@@ -12,6 +12,7 @@ import jakarta.servlet.http.Part;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Base64;
 import java.util.UUID;
 
 import com.EventPlanner.Models.User;
@@ -30,28 +31,38 @@ public class EditProfileImageController extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String userId=request.getParameter("userId");
+		UserService userservice=new UserService();
+		int userId=Integer.parseInt(request.getParameter("userId"));
 		Part image=request.getPart("profile-pic-input");
-		
-		
+		User user=userservice.getUserDetailsById(userId);
+		 
+		/*
 		String imageName=image.getSubmittedFileName();
-		String uuid = UUID.randomUUID().toString();
-		String uniqueFileName =uuid+imageName;
-		String uploadDirectory ="C:/Users/LENOVO/git/Event-Planning-System/EventPlanner/src/main/webapp/uploads/"+uniqueFileName;
-		System.out.println(uploadDirectory);
+		
+		 * String uuid = UUID.randomUUID().toString(); String uniqueFileName
+		 * =uuid+imageName; String uploadDirectory
+		 * ="C:/Users/LENOVO/git/Event-Planning-System/EventPlanner/src/main/webapp/uploads/"
+		 * +uniqueFileName; System.out.println(uploadDirectory);
+		 FileOutputStream output = new FileOutputStream(uploadDirectory);
+		 */
 		
 		 //save file to local folder
-		 FileOutputStream output = new FileOutputStream(uploadDirectory);
-		 InputStream input = image.getInputStream();
-		 byte[] data =new byte[input.available()];
-		 input.read(data);
-		 output.write(data);
-		 output.close();
+		
 		 
-		 UserService userservice=new UserService();
-		 userservice.updateProfileImage(uuid, uniqueFileName,userId);
-		 User user=userservice.getUserDetailsById(userId);
+		 InputStream input = image.getInputStream();
+		 byte[] Imagedata =input.readAllBytes();
+		 int bytesRead;
+         int offset = 0;
+         
+         while ((bytesRead = input.read(Imagedata, offset, Imagedata.length - offset)) != -1) {
+             offset += bytesRead;
+         }
+		 
+         String base64Image = Base64.getEncoder().encodeToString(Imagedata);
+         
+         user.setEncodedImage(base64Image);
+		 userservice.updateProfileImage(user,userId);
+		 
 		 
 		 //update the user sesisio data
 		 HttpSession session=request.getSession();

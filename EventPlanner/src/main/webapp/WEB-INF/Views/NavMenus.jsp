@@ -11,6 +11,10 @@
 <title></title>
 </head>
 <body>
+<c:set var="activePage" value="${activePage}"/>
+<c:set var="dashboard" value="dashboard"/>
+<c:set var="AllEvents" value="AllEvents"/>
+
 <div class="nav-background" id="nav-background">       
             <div class="nav-bar slideRight" id="nav-bar">
                 <button type="button" class="nav-close" id="nav-close" onclick="closeNavbar()">
@@ -74,8 +78,7 @@
                   
                                  <c:forEach var="eventType" items="${etList}">
                                          <option value="${eventType.getId()}">${eventType.getType()} </option>
-                                     </c:forEach>
-                 
+                                     </c:forEach>          
                                </select>
                           </div>
                           <button type="submit">Save</button>
@@ -86,17 +89,35 @@
 
        <div class="nav-desktop">
             <div class="logo">
-                LOGO    
+               <img src="assets/images/ELOGO-dashboard.png" alt="">   
             </div>
             <div class="nav-desktop-item">
                 <form action="./PageRedirectController" method="get">
                 	<input type="hidden" name="page" value="dashboard">
-                    <button class="nav-link">Dashboard</button>
+                	<c:choose>
+                		<c:when test="${activePage eq dashboard}">
+                			<button class="nav-link active">Dashboard</button>
+                		</c:when>
+                		<c:when test="${activePage ne dashboard}">
+                			<button class="nav-link">Dashboard</button>
+                		</c:when>
+                	</c:choose>
+                    
                 </form>
             </div>
             <div class="nav-desktop-item">
-                <form action="" method="post">
-                    <button class="nav-link">All Events</button>
+                <form action="./PageRedirectController" method="get">
+                	<input type="hidden" name="page" value="AllEvents">
+                	<input type="hidden" name="userid" value="${User.getId()}">
+                	<c:choose>
+                		<c:when test="${activePage eq AllEvents}">
+                			<button class="nav-link active">All Events</button>
+                		</c:when>
+                		<c:when test="${activePage ne AllEvents}">
+                			<button class="nav-link">All Events</button>
+                		</c:when>
+                	</c:choose>
+                    
                 </form>
              </div>
              <div class="nav-desktop-item">

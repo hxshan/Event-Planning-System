@@ -36,7 +36,7 @@ public class Services_Service {
 			
 		} catch (SQLException e) {
 			ErrorLoggerUtil.logError("Services_Service(getAllServices)","SQL ERROR: ", e);
-			e.printStackTrace();
+		
 		}finally {
 			DBConnectionUtil.closeConnection(con);
 		}
@@ -45,6 +45,33 @@ public class Services_Service {
 			
 	}
 	
+	public Service getServiceById(int id) {
+		Connection con =DBConnectionUtil.getDBConnection();
+		String sql="select * from service where id=?;";
+		Service service=new Service();
+		try {
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, id);
+			ResultSet rs= stmt.executeQuery();
+			if(rs.next()) {
+				service.setId(rs.getInt("id"));
+				service.setServiceTypeId(rs.getInt("service_type_id"));
+				service.setVendorId(rs.getInt("vendor_id"));
+				service.setServiceName(rs.getString("name"));
+				service.setDescription(rs.getString("description"));
+				service.setPrice(rs.getBigDecimal("price"));
+			}
+			rs.close();
+			stmt.close();
+			
+		} catch (SQLException e) {
+			ErrorLoggerUtil.logError("Services_Service(getServiceById)","SQL ERROR: ", e);
+		}finally {
+			DBConnectionUtil.closeConnection(con);
+		}
+		
+		return service;
+	}
 	
 	
 }

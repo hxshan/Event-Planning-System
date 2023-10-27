@@ -20,16 +20,18 @@
 	<div class="event-section">
              <div class="event-info-sec">
                 <div class="event-hero">
+                		
+                		<img src="event.jpg" alt="">
                         <h1>${currentEvent.getName()}</h1>
-                        <h2>${currentEvent.getStartdate()}</h2>
+                        <h2><span>Held on</span><br>${currentEvent.getStartdate()}</h2>
                 </div>
-                <div class="description">
+                <!-- <div class="description">
                     <h2>Description</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur
                         adipiscing elit. In ut lobortis orci, et sagittis quis
                         tincidunt non, sodales quis felis.
                         Vivamus luctus vitae eros eget faucibus. Sed aliquam erat luctu</p>
-                </div>
+                </div> -->
              </div>
              <div class="event-services-sec">
                 <h2>Services</h2>

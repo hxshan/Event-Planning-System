@@ -7,8 +7,8 @@ public class User {
 	private String Email;
 	private String PhoneNumber;
 	private String Password;
-	private String ImageId;
-	private String ImageName;
+	private byte[] image;
+	private String encodedImage;
 	
 	
 	
@@ -76,26 +76,27 @@ public class User {
 
 
 
-	public String getImageName() {
-		return ImageName;
+	public byte[] getImage() {
+		return image;
 	}
 
 
 
-	public void setImageName(String imageName) {
-		ImageName = imageName;
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 
 
-	public String getImageId() {
-		return ImageId;
+	public String getEncodedImage() {
+		return encodedImage;
 	}
 
 
 
-	public void setImageId(String imageId) {
-		ImageId = imageId;
+	public void setEncodedImage(String encodedImage) {
+		this.encodedImage = encodedImage;
 	}
-	
+
+
 }

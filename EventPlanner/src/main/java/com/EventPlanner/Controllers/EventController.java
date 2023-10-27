@@ -67,11 +67,13 @@ public class EventController extends HttpServlet {
 		/*=======================================EDITING EVENT==========================================*/
 		else if(triggerType.equalsIgnoreCase("EditEvent")) {
 			int eventId =Integer.parseInt( request.getParameter("eventId"));
+			Event event = eventservice.getEventDetails(eventId);
 			int userid=Integer.parseInt(request.getParameter("userId"));
 			
-			Event event = eventservice.getEventDetails(eventId);
-			session.setAttribute("currentEvent", event);
 			
+			
+			
+			session.setAttribute("currentEvent", event);	
 			RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/EventDetails.jsp");
 			requestdispatcher.forward(request, response);
 			

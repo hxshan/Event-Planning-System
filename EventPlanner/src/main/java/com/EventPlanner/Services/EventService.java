@@ -20,7 +20,7 @@ public class EventService {
 		
 		
 		Connection con=DBConnectionUtil.getDBConnection();
-		String sql="insert into event(name,type_id,startDate,endDate,owner_id) values(?,?,?,?,?);";
+		String sql="insert into event(name,type_id,startDate,endDate,owner_id,status) values(?,?,?,?,?,?);";
 		
 		try {
 			PreparedStatement stmt=con.prepareStatement(sql);
@@ -29,6 +29,7 @@ public class EventService {
 			stmt.setObject(3,event.getStartdate());
 			stmt.setObject(4,event.getEnddate());
 			stmt.setInt(5, event.getOwnerId());
+			stmt.setString(6,event.getStatus());
 			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
@@ -78,8 +79,10 @@ public class EventService {
 					LocalDate startDate=rs.getDate("startDate").toLocalDate();
 					LocalDate endDate=rs.getDate("endDate").toLocalDate();
 					int ownerid=rs.getInt("owner_id");
-				
-					Elist.add(new Event(Id,ename,typeid,startDate,endDate,ownerid));
+					String status =rs.getString("status");
+					Event event=new Event(Id,ename,typeid,startDate,endDate,ownerid);
+					event.setStatus(status);
+					Elist.add(event);
 				}
 			}
 		} catch (SQLException e) {
@@ -166,6 +169,7 @@ public class EventService {
 				event.setStartdate(rs.getDate("startDate").toLocalDate());
 				event.setEnddate(rs.getDate("endDate").toLocalDate());
 				event.setOwnerId(rs.getInt("owner_id"));
+				event.setStatus("status");
 			}
 		
 		} catch (SQLException e) {

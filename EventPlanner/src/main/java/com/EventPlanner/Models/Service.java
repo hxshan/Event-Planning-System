@@ -10,7 +10,9 @@ public class Service {
 		private String Description;
 		private BigDecimal price;
 		
-		
+		public Service() {
+			
+		}
 		
 		public Service(int ServiceTypeId, int vendorId,String ServiceName,String Description, BigDecimal price) {
 			
