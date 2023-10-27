@@ -42,7 +42,7 @@ public class AddVendoService_Service  {
 }
 	public void deleteService(int serviceId) {
 		Connection con = DBConnectionUtil.getDBConnection();
-		String sql = "delet from service where id=?";
+		String sql = "delete from service where id=?";
 		
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
@@ -111,42 +111,7 @@ public class AddVendoService_Service  {
 		
 	}
 	
-	public List<Service> getVendorsServices(int vendorid){
-		Connection con = DBConnectionUtil.getDBConnection();
-		String sql = "select * from service where vendor_id = ?";
-		ResultSet rSet = null;
-		
-		try {
-			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(2, vendorid);
-			rSet = pstmt.executeQuery();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		List<Service> SList = new ArrayList<Service>();
-		
-		try {
-			if (rSet != null) {
-				while(rSet.next()) {
-					int Id = rSet.getInt("id");
-					int ServiceTypeId = rSet.getInt("service_type_id");
-					int VendorId = rSet.getInt("vendor_id");
-					String ServiceName = rSet.getString("name");
-					String Description = rSet.getString("description");
-					BigDecimal Price = rSet.getBigDecimal("price");
-					
-					SList.add(new Service(Id,ServiceTypeId,VendorId,ServiceName,Description,Price));
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			DBConnectionUtil.closeConnection(con);
-		}
-		
-		return SList;
-	}
+	
 	
 	
 

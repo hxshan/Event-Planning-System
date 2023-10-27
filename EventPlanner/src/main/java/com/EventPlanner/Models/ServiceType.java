@@ -1,23 +1,27 @@
 package com.EventPlanner.Models;
 
 public class ServiceType {
-	private	int ServiceId;
+	private	int Id;
 	private String Type;
 	private String Description;
 	
-	public ServiceType(int serviceId, String type, String description) {
+	public ServiceType(int Id, String type, String description) {
 		
-		this.ServiceId = serviceId;
+		this.Id = Id;
 		this.Type = type;
 		this.Description = description;
 	}
 
-	public int getServiceId() {
-		return ServiceId;
+	public ServiceType() {
+		
 	}
 
-	public void setServiceId(int serviceId) {
-		ServiceId = serviceId;
+	public int getServiceId() {
+		return Id;
+	}
+
+	public void setServiceId(int Id) {
+		this.Id =Id;
 	}
 
 	public String getType() {

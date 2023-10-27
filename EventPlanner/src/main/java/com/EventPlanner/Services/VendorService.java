@@ -1,10 +1,18 @@
 package com.EventPlanner.Services;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.tomcat.util.net.jsse.PEMFile;
+
+import com.EventPlanner.Models.Event;
+import com.EventPlanner.Models.Service;
+import com.EventPlanner.Models.ServiceType;
 import com.EventPlanner.Models.User;
 import com.EventPlanner.Models.Vendor;
 import com.EventPlanner.Utils.DBConnectionUtil;
@@ -78,5 +86,75 @@ public class VendorService extends UserService{
 		}
 		
 		return vendor;
+	}
+	
+	public List<ServiceType>  GetServiceType() {
+		Connection con = DBConnectionUtil.getDBConnection();	
+		String sql="select * from servicetype";
+		ServiceType serviceType = new ServiceType();
+		List<ServiceType> StypeList = new ArrayList<ServiceType>();
+		
+		PreparedStatement stmt;
+		try {
+			
+			stmt = con.prepareStatement(sql);
+			ResultSet rs=stmt.executeQuery();
+			
+			
+			
+			while (rs.next()) {
+			
+				 int id =  ( rs.getInt("id"));
+				String Description =(rs.getString("discription"));
+				String Type = (rs.getString("type"));
+				
+				StypeList.add(new ServiceType(id,Description,Type));
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			DBConnectionUtil.closeConnection(con);
+		}
+		
+		
+		return StypeList;
+	}
+	
+	public List<Service> getVendorsServices(int vendorid){
+		Connection con = DBConnectionUtil.getDBConnection();
+		String sql = "select * from service where vendor_id = ?";
+		ResultSet rSet = null;
+		
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(2, vendorid);
+			rSet = pstmt.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		List<Service> SList = new ArrayList<Service>();
+		
+		try {
+			if (rSet != null) {
+				while(rSet.next()) {
+					int Id = rSet.getInt("id");
+					int ServiceTypeId = rSet.getInt("service_type_id");
+					int VendorId = rSet.getInt("vendor_id");
+					String ServiceName = rSet.getString("name");
+					String Description = rSet.getString("description");
+					BigDecimal Price = rSet.getBigDecimal("price");
+					
+					SList.add(new Service(Id,ServiceTypeId,VendorId,ServiceName,Description,Price));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBConnectionUtil.closeConnection(con);
+		}
+		
+		return SList;
 	}
 }

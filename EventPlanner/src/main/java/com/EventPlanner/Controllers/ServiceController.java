@@ -5,10 +5,11 @@ import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.apache.catalina.tribes.ChannelSender;
+
 
 import com.EventPlanner.Models.Service;
 import com.EventPlanner.Services.AddVendoService_Service;
+import com.EventPlanner.Services.VendorService;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -23,19 +24,21 @@ public class ServiceController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/Views/Vendor.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/Views/VendorDashboard.jsp");
         requestDispatcher.include(request, response);
 	}
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-			/*response.setContentType("text/html");
-			PrintWriter out = response.getWriter();*/
+			response.setContentType("text/html");
+			PrintWriter out = response.getWriter();
 		String triggerType = request.getParameter("triggerType");
 		AddVendoService_Service addvendorService = new AddVendoService_Service();
 		HttpSession session=request.getSession();
 		
 		
+		
+		//Add service Servlet
 		
 		if(triggerType.equalsIgnoreCase("AddService")) {
 		
@@ -48,16 +51,22 @@ public class ServiceController extends HttpServlet {
 		
 		Service service = new Service(1,VendorId,TypeId,Servicename,discription,price);
 		
+		
 		addvendorService.AddService(service);
 		
-		List<Service> ServiceList = addvendorService.getVendorsServices(VendorId);
+		VendorService vendorService = new VendorService();
+		List<Service> ServiceList = vendorService.getVendorsServices(VendorId);
 		session.setAttribute("ServiceList", ServiceList);
 		
 		response.sendRedirect("./ServiceController");
 		
+		
+		
 		}
 		
-		else if(triggerType.equalsIgnoreCase("EditService")){
+		//Update Service Servlet
+		
+		else if(triggerType.equalsIgnoreCase("UpdateService")){
 			int VendorId=Integer.parseInt(request.getParameter("userId")) ;
 			int ServiceTypeId=Integer.parseInt(request.getParameter("ServiceTypeId")) ;
 			
@@ -70,13 +79,17 @@ public class ServiceController extends HttpServlet {
 		
 	
 	
-	else if(triggerType.equalsIgnoreCase("DeleteService")) {
+	
+		//Delet Service Servlet
+		
+		else if(triggerType.equalsIgnoreCase("DeleteService")) {
 		int VendorId=Integer.parseInt(request.getParameter("userId")) ;
-		int ServiceTypeId=Integer.parseInt(request.getParameter("ServiceTypeId")) ;
+		int ServiceId=Integer.parseInt(request.getParameter("ServieId")) ;
 		
-		addvendorService.deleteService(VendorId);
+		addvendorService.deleteService(ServiceId);
 		
-		List<Service> ServiceList = addvendorService.getVendorsServices(VendorId);
+		VendorService vendorService = new VendorService();
+		List<Service> ServiceList = vendorService.getVendorsServices(VendorId);
 		
 		session.setAttribute("ServiceList", ServiceList);
 		response.sendRedirect("./ServiceController");
