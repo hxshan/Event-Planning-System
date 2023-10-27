@@ -5,13 +5,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <title>Insert title here</title>
 </head>
 <body>
 	<form action="./ServiceController" method="post">
 		<input type="hidden" name="triggerType" value="AddService"/>
     	<input type="hidden" name="userId" value="${User.getId()}"/>
-    	<input type="hidden" name="TypeId" value="${Service.getTypeId()}"/>
      <div class="form-row">
           <label for="EvenName">Service Name</label>
           <input id="EvenName" name="Servicename" type="text" />
@@ -24,7 +26,7 @@
           <label for="EvenName">Price</label>
           <input id="EvenName" name="price" type="text" />
 	</div>
-	<select class="eventType-select" name="eventType" id="eventType">
+	<select class="eventType-select" name="TypeId"  id="eventType">
          <option value="NULL">Select Type</option>
                   
          <c:forEach var="ServiceType" items="${stypeList}">

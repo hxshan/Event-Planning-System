@@ -64,12 +64,13 @@ public class LoginController extends HttpServlet {
 					VendorService vendorservice=new VendorService();
 					Vendor vendor= vendorservice.getVendorDetails(email);
 					List<ServiceType> stypeList =  vendorservice.GetServiceType();
+					for(ServiceType s:stypeList){
+						System.out.println(s.getServiceId());
+					}
 					List<Service> servicesList = vendorservice.getVendorsServices(vendor.getId());
 					session.setAttribute("User",vendor);
 					session.setAttribute("stypeList",stypeList);
 					session.setAttribute("servicesList",servicesList);
-					
-					
 				}
 				
 				//redirect to page

@@ -30,7 +30,7 @@
             </div> 
         </div>
     </header> -->
-    <%@ include file="NavBar.jsp" %>
+     <%@ include file="NavBar.jsp" %>
     <main>
         <%@ include file="NavMenus.jsp" %>
         

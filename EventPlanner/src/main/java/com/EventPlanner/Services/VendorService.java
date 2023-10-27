@@ -91,7 +91,6 @@ public class VendorService extends UserService{
 	public List<ServiceType>  GetServiceType() {
 		Connection con = DBConnectionUtil.getDBConnection();	
 		String sql="select * from servicetype";
-		ServiceType serviceType = new ServiceType();
 		List<ServiceType> StypeList = new ArrayList<ServiceType>();
 		
 		PreparedStatement stmt;
@@ -105,7 +104,7 @@ public class VendorService extends UserService{
 			while (rs.next()) {
 			
 				 int id =  ( rs.getInt("id"));
-				String Description =(rs.getString("discription"));
+				String Description =(rs.getString("description"));
 				String Type = (rs.getString("type"));
 				
 				StypeList.add(new ServiceType(id,Description,Type));

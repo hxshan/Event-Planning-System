@@ -30,8 +30,7 @@ public class ServiceController extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-			response.setContentType("text/html");
-			PrintWriter out = response.getWriter();
+
 		String triggerType = request.getParameter("triggerType");
 		AddVendoService_Service addvendorService = new AddVendoService_Service();
 		HttpSession session=request.getSession();
