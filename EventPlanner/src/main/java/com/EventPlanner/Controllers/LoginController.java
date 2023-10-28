@@ -6,14 +6,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.mindrot.jbcrypt.BCrypt;
-
 import com.EventPlanner.Models.Event;
 import com.EventPlanner.Models.EventType;
 import com.EventPlanner.Models.User;
@@ -50,9 +45,21 @@ public class LoginController extends HttpServlet {
 				if( userType.compareToIgnoreCase("Organiser")==0 ){
 					List<Event> Elist=eventservice.getUsersEvents(user.getId());
 					List<EventType> etList=eventservice.getEventTypes();
+					
+					//Find the Event type from the event type id
+					for(Event event:Elist) {
+						event.setEventType(eventservice.getEventTypeById(event.getType_id()));
+					}
+					
+					
+					
 					session.setAttribute("etList", etList);
 					session.setAttribute("Elist", Elist);
 					session.setAttribute("User",user);
+					session.setAttribute("activePage","dashboard");
+					
+					RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/Dashboard.jsp");
+					requestdispatcher.forward(request, response);
 					
 				}
 				else if(userType.compareToIgnoreCase("Vendor") ==0 ){
@@ -61,11 +68,13 @@ public class LoginController extends HttpServlet {
 					Vendor vendor= vendorservice.getVendorDetails(email);		
 					session.setAttribute("User",vendor);
 					
+					
+					RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/testVendor.jsp");
+					requestdispatcher.forward(request, response);
 				}
 				
 				//redirect to page
-				RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/testVendor.jsp");
-				requestdispatcher.forward(request, response);
+
 				
 			}else {
 				response.sendRedirect("static/Login.jsp?password=false");

@@ -13,6 +13,13 @@ public class Vendor extends User {
 		this.setAddress(address);
 		
 	}
+	public Vendor(int id,int typeid, String name, String email, String PhoneNumber, String pwd,String encodedImage,String des,String address ) {
+		super(id,typeid, name, email,PhoneNumber, pwd);
+		this.setEncodedImage(encodedImage);
+		this.setDescription(des);
+		this.setAddress(address);
+		
+	}
 
 	public Vendor() {
 		// TODO Auto-generated constructor stub

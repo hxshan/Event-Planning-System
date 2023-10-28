@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet"  type="text/css" href="css/UserDashboard.css" />
   	<link rel="stylesheet" type="text/css" href="css/Navs-Modals.css">
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
 <header class="header">
@@ -29,7 +27,14 @@
                 <form action="./PageRedirectController" method="get">
                 	<input type="hidden" name="page" value="org-profile">
                     <button class="user-pfp-img-btn" type="submit">
-                        <img src="assets/icons/MaleUser.png" alt="pfp">
+                    <c:choose>
+                    	<c:when test="${empty User.getEncodedImage()}">
+                    		<img src="assets/icons/MaleUser.png" alt="pfp">
+                    	</c:when>
+                    	<c:when test="${not empty User.getEncodedImage()}">
+                    		<img src="data:image/jpeg;base64,${User.getEncodedImage()}" alt="Image">
+                    	</c:when>
+                    </c:choose>       
                     </button>
                 </form>                      
             </div> 

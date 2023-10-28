@@ -11,26 +11,35 @@ public class Event {
 	private LocalDate enddate;
 	private float budget;
 	private int ownerId;
+	private String Status;
+	
+	
+	//Properties for Views 
+	private String EventType;
+	private String OwnerName;
+	
 	
 	
 	public Event() {
 		
 	}
-	public Event(int Id,String name,int typeid,LocalDate startdate2,LocalDate enddate2,int ownerid) {
+	public Event(int Id,String name,int typeid,LocalDate startdate,LocalDate enddate2,int ownerid) {
 		this.id=Id;
 		this.name=name;
 		this.type_id=typeid;
-		this.startdate=startdate2;
+		this.startdate=startdate;
 		this.enddate=enddate2;
 		this.ownerId=ownerid;
+		this.Status="TBD";
 	}
 	
-	public Event(String name,int typeid,LocalDate startdate2,LocalDate enddate2,int ownerid) {
+	public Event(String name,int typeid,LocalDate startdate,LocalDate enddate,int ownerid) {
 		this.name=name;
 		this.type_id=typeid;
-		this.startdate=startdate2;
-		this.enddate=enddate2;
+		this.startdate=startdate;
+		this.enddate=enddate;
 		this.ownerId=ownerid;
+		this.Status="TBD";
 	}
 	public int getId() {
 		return id;
@@ -74,5 +83,22 @@ public class Event {
 	public void setOwnerId(int ownerId) {
 		this.ownerId = ownerId;
 	}
-	
+	public String getStatus() {
+		return Status;
+	}
+	public void setStatus(String status) {
+		Status = status;
+	}
+	public String getEventType() {
+		return EventType;
+	}
+	public void setEventType(String eventType) {
+		EventType = eventType;
+	}
+	public String getOwnerName() {
+		return OwnerName;
+	}
+	public void setOwnerName(String ownerName) {
+		OwnerName = ownerName;
+	}
 }

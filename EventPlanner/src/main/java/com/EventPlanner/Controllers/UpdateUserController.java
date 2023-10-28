@@ -21,15 +21,16 @@ public class UpdateUserController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-		String name=request.getParameter("name").trim();
-		String email=request.getParameter("email").trim();
-		String phoneNum=request.getParameter("phoneNumber").trim();
+		int userid=Integer.parseInt(request.getParameter("userId").trim()); 
 		
-		String userId=request.getParameter("userId").trim() ;
+		UserService userservice = new UserService();		
+		String Name=request.getParameter("name").trim();
+		String Email=request.getParameter("email").trim();
+		String PhoneNumber=request.getParameter("phoneNumber").trim();			  		
 		
-		UserService userservice = new UserService();
-		userservice.updateUser(Integer.parseInt(userId),name,email,phoneNum);
-		User user=userservice.getUserDetailsById(userId);
+		userservice.updateUser(userid,Name,Email,PhoneNumber);
+		User user=userservice.getUserDetailsById(userid);
+		
 		session.setAttribute("User",user);
 		
 		
