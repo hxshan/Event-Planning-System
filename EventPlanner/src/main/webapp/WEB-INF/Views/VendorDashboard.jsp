@@ -16,15 +16,20 @@
             <img src="Menu.png" alt="menu-btn">
         </button>
         <div class="user-pfp">
-            <button name="button" value="AddEvent" id="addEventBtn" class="addEventBtn-desk" onclick="openEventForm()">
-                <img src="Plus.png" alt="Add event">
+        <form action="./PageRedirectController" >
+        <input type="hidden" name="page" value="AddService"/>
+        
+        <button name="button" value="AddService" id="addServiceBtn" class="addEventBtn-desk" >
+                <img src="Plus.png" alt="Add service">
                 <p>Add Service
                 </p>             
             </button>
-            <button name="button" value="AddEvent" id="addEventBtnmob" class="addEventBtn-mob" onclick="openEventForm()">
-                <img src="Plus.png" alt="Add event">
+            <button name="button" value="AddService" id="addServiceBtn" class="addEventBtn-mob" >
+                <img src="Plus.png" alt="Add service">
             </button>
-            <div class="user-pfp-img">
+        
+        </form>
+                        <div class="user-pfp-img">
                 <form action="" method="get">
                     <input type="hidden" name="page" value="org-profile">
                     <button class="user-pfp-img-btn" type="submit">
@@ -59,76 +64,9 @@
             </div>
         </div>
 
-        <div id="Modal" class="modal">
-            <div class="modal-content slideDown">
-                <div class="closeBtn-con">
-                    <button name="button" value="closeEventForm" id="closeEventForm" class="eventClose" onclick="closeEventForm()">
-                        <img src="Multiply.png" alt="Close">
-                    </button>
-                </div>
-                <div class="modal-header">
-                   <h2>New Service</h2>
-               </div>
-                <div class="modal-body">
-                     <form class="addEvent-form" action="./ServiceController" method="post">
-                        <input type="hidden" name="triggerType" value="AddService"/>
-                        <input type="hidden" name="userId" value="${User.getId()}"/>
-                       
-                         <div class="form-row">
-                               <label for="vendor">Providing Service Name</label>
-                               <input id="vendor" name="Servicename"
-                               placeholder="Your Service Name" type="text" />
-                         </div>
-   
-                         <div class="form-row">
-                               <label for="vendor">Service Description</label>
-                               <input id="vendor" name="description" placeholder="Service Description" type="text" />
-                         </div>
-   
-                             <div class="form-row">
-                               <label for="vendor">Price</label>
-                               <input id="vendor" name="price" placeholder="Price" type="number" />
-                         </div>
-                 
-                         <div class="form-row">
-                               <label for="ServiceType">Service Type</label>
-                               <select class="eventType-select" name="TypeId" id="ServiceType">
-                                   <option value="NULL">Select Type</option>
-                  
-                                 <c:forEach var="ServiceType" items="${stypeList}">
-                                         <option value="${ServiceType.getServiceId()}">${ServiceType.getType()} </option>
-                                     </c:forEach>
-                 
-                               </select>
-                          </div>
-                          <button type="submit">Save</button>
-                     </form>
-                 </div>
-            </div>
-        </div>
+        <%@ include file="VendorNavbarMenus.jsp" %>
         
-        <div class="nav-desktop">
-            <div class="logo">
-                <img src="ELOGO-dashboard.png" alt="">   
-            </div>
-            <div class="nav-desktop-item">
-                <form action="">
-                    <button class="nav-link active">
-                        Dashboard
-                    </button>
-                </form> 
-            </div>
-            <div class="nav-desktop-item">
-                <button class="nav-link not-active">
-                         All services
-                 </button>
-             </div>
-             <div class="nav-desktop-item">
-                <button class="nav-link">
-                         Orders
-                 </button>
-             </div>
-        </div>
+        
         <div class="Dashboard-content">
             <div class="recentEvents-con" id="recentEvents-con">
                 <h2 class="dashboard-title">Upcoming orders</h2>
@@ -202,27 +140,7 @@
     </main>
     <script src="NavigationModals.js"></script>
 <script>
-    /*const navOpen_Btn=document.getElementById("nav_btn");
-    const navClose_Btn=document.getElementById("nav-close");
-    const nav_bar=document.getElementById("nav-background");
-
-    const openModalBtn_mobile = document.getElementById("addEventBtnmob");
-    const openModalBtn_desktop = document.getElementById("addEventBtn");
-    const closeModalBtn = document.getElementById("closeEventForm");
-    const modal = document.getElementById("Modal");
-
-    closeEventForm=()=>{
-        modal.style.display = "none";
-    }
-    closeNavbar=()=>{
-        nav_bar.style.display='none'
-    }
-    openEventForm=()=>{
-        modal.style.display = "flex";
-    }
-    openNavbar=()=>{
-        nav_bar.style.display='flex'
-    }     */
+ 
     
     //Genarating calender
       const today = new Date()

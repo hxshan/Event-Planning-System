@@ -74,7 +74,7 @@ public class LoginController extends HttpServlet {
 				}
 				
 				//redirect to page
-				RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/AddService.jsp");
+				RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/VendorDashboard.jsp");
 				requestdispatcher.forward(request, response);
 				
 			}else {

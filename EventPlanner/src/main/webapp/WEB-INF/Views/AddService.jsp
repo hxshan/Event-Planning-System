@@ -8,6 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" type="text/css" href="css/AddService.css">
+<script src="../scripts/FromValidations.js"></script>
 <title>Add Service</title>
 </head>
 <body>
@@ -36,6 +37,8 @@
             </label>
             <input type="number" name="price" id="vendor"placeholder="Price"class="formbold-form-input"/>
           </div>
+          
+         
    <div class="formbold-mb-5">
 	<select class="eventType-select" name="TypeId"  id="eventType">
          <option value="NULL">Select Type</option>
@@ -51,14 +54,13 @@
     <button class="formbold-btn" type="submit">
        Save
      </button>
-     </div>
-     
-     <div>
-    <button class="formbold-btn2" type="submit">
+    
+  </div>
+ </form> 
+ <a href = "../WEB-INF/Views/VendorDashboard.jsp">
+ <button  class="formbold-btn2" type="submit" >
        Already Have Services
-     </button>
-     </div>
- </form>
+     </button></a>
  </div>
  </div>
 </body>

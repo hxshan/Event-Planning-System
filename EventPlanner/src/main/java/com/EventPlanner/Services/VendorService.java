@@ -123,13 +123,13 @@ public class VendorService extends UserService{
 	
 	public List<Service> getVendorsServices(int vendorid){
 		Connection con = DBConnectionUtil.getDBConnection();
-		String sql = "select * from service where vendor_id = ?";
+		String sql = "select * from service where vendor_id=?";
 		ResultSet rSet = null;
 		
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, vendorid);
-			rSet = pstmt.executeQuery(sql);
+			rSet = pstmt.executeQuery();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -137,7 +137,7 @@ public class VendorService extends UserService{
 		List<Service> SList = new ArrayList<Service>();
 		
 		try {
-			if (rSet != null) {
+			
 				while(rSet.next()) {
 					int Id = rSet.getInt("id");
 					int ServiceTypeId = rSet.getInt("service_type_id");
@@ -146,13 +146,18 @@ public class VendorService extends UserService{
 					String Description = rSet.getString("description");
 					BigDecimal Price = rSet.getBigDecimal("price");
 					
+					
+					
 					SList.add(new Service(Id,ServiceTypeId,VendorId,ServiceName,Description,Price));
 				}
-			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			DBConnectionUtil.closeConnection(con);
+		}for (Service service : SList) {
+		System.out.println(service.getDescription());	
+			
 		}
 		
 		return SList;
