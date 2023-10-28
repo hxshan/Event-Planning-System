@@ -42,13 +42,13 @@ public class ServiceController extends HttpServlet {
 		if(triggerType.equalsIgnoreCase("AddService")) {
 		
 		int VendorId=Integer.parseInt(request.getParameter("userId")) ;
-		int TypeId=Integer.parseInt(request.getParameter("TypeId")) ;
+		int ServiceTypeId=Integer.parseInt(request.getParameter("TypeId")) ;
 		
 		String Servicename=request.getParameter("Servicename");
 		String description=request.getParameter("description");
 		BigDecimal price= new BigDecimal(request.getParameter("price")); 
 		
-		Service service = new Service(2,VendorId,TypeId,Servicename,description,price);
+		Service service = new Service(0,VendorId,ServiceTypeId , Servicename,description,price);
 		
 		
 		addvendorService.AddService(service);

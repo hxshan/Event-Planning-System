@@ -28,13 +28,13 @@
             <label for="vendor" class="formbold-form-label">
               Service Description
             </label>
-            <input type="text" name="discription" id="vendor" placeholder="Service Description" class="formbold-form-input"/>
+            <input type="text" name="description" id="vendor" placeholder="Service Description" class="formbold-form-input"/>
           </div>
 	 <div class="formbold-mb-5">
             <label for="vendor" class="formbold-form-label">
               Price
             </label>
-            <input type="number" name="guest" id="vendor"placeholder="Price"class="formbold-form-input"/>
+            <input type="number" name="price" id="vendor"placeholder="Price"class="formbold-form-input"/>
           </div>
    <div class="formbold-mb-5">
 	<select class="eventType-select" name="TypeId"  id="eventType">

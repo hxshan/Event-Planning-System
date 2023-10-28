@@ -128,8 +128,8 @@ public class VendorService extends UserService{
 		
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(2, vendorid);
-			rSet = pstmt.executeQuery();
+			pstmt.setInt(1, vendorid);
+			rSet = pstmt.executeQuery(sql);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class Service {
 		private int Id;
 		private int vendorId;
-		private int TypeId;
+		private int ServiceTypeId;
 		private  String ServiceName;
 		private String Description;
 		private BigDecimal price;
@@ -13,22 +13,11 @@ public class Service {
 		
 		
 		
-		public Service(int TypeId, int vendorId,String Description, BigDecimal price) {
-			
-			
-			this.vendorId=vendorId;
-			this.TypeId=TypeId;
-			
-			this.Description = Description;
-			this.price = price;
-		}
-		
-		
-		public Service(int id,int ServiceTypeId, int vendorId,String ServiceName,String Description, BigDecimal price) {
+		public Service(int id,int vendorId,int ServiceTypeId,String ServiceName,String Description, BigDecimal price) {
 			
 			this.Id=id;
-			
 			this.vendorId=vendorId;
+			this.ServiceTypeId=ServiceTypeId;
 			this.ServiceName = ServiceName;
 			this.Description = Description;
 			this.price = price;
@@ -42,13 +31,13 @@ public class Service {
 		}
 
 
-		public int getTypeId() {
-			return TypeId;
+		public int getServiceTypeId() {
+			return ServiceTypeId;
 		}
 
 
-		public void setTypeId(int typeId) {
-			TypeId = typeId;
+		public void setServiceTypeId(int servicetypeId) {
+			ServiceTypeId = servicetypeId;
 		}
 
 

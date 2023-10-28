@@ -1,19 +1,16 @@
 package com.EventPlanner.Services;
 
-import java.math.BigDecimal;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.EventPlanner.Models.Service;
 
 
 import com.EventPlanner.Utils.DBConnectionUtil;
-import com.mysql.cj.protocol.Resultset;
-import com.mysql.cj.x.protobuf.MysqlxSql.StmtExecute;
+
 
 public class AddVendoService_Service  {
 		
@@ -22,12 +19,12 @@ public class AddVendoService_Service  {
 	public void AddService(Service service) {
 		Connection con = DBConnectionUtil.getDBConnection();
 		
-		String sql= "insert into service (service_type_id,vendor_id,name,description,price) values (?,?,?,?,?); ";
+		String sql= "insert into service(service_type_id,vendor_id,name,description,price) values (?,?,?,?,?); ";
 			
 		try{
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1,service.getTypeId());			pstmt.setInt(2, service.getVendorId());
+			pstmt.setInt(1,service.getServiceTypeId());			pstmt.setInt(2, service.getVendorId());
 			pstmt.setString(3, service.getServiceName());
 			pstmt.setString(4, service.getDescription());
 			pstmt.setBigDecimal(5, service.getPrice());
@@ -100,7 +97,7 @@ public class AddVendoService_Service  {
 		try {
 			if(rSet.next()) {
 				service.setId(rSet.getInt("id"));
-				service.setTypeId(rSet.getInt("service_type_id"));
+				service.setServiceTypeId(rSet.getInt("service_type_id"));
 				service.setVendorId(rSet.getInt("vendor_id"));
 				service.setServiceName(rSet.getString("name"));
 				service.setDescription(rSet.getString("description"));
