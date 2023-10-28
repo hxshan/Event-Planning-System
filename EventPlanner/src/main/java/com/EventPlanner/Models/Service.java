@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 public class Service {
 		private int Id;
-		private int ServiceTypeId;
 		private int vendorId;
+		private int ServiceTypeId;
 		private  String ServiceName;
 		private String Description;
 		private BigDecimal price;
@@ -19,26 +19,23 @@ public class Service {
 			
 		}
 		
-		public Service(int ServiceTypeId, int vendorId,String ServiceName,String Description, BigDecimal price) {
-			
-			this.ServiceTypeId = ServiceTypeId;
-			this.vendorId=vendorId;
-			this.ServiceName = ServiceName;
-			this.Description = Description;
-			this.price = price;
-		}
 		
-		
-		public Service(int id,int ServiceTypeId, int vendorId,String ServiceName,String Description, BigDecimal price) {
+		public Service(int id,int vendorId,int ServiceTypeId,String ServiceName,String Description, BigDecimal price) {
 			
 			this.Id=id;
-			this.ServiceTypeId = ServiceTypeId;
 			this.vendorId=vendorId;
+			this.ServiceTypeId=ServiceTypeId;
 			this.ServiceName = ServiceName;
 			this.Description = Description;
 			this.price = price;
 		}
 		
+
+
+		
+		public Service() {
+			
+		}
 
 
 		public int getServiceTypeId() {
@@ -46,8 +43,8 @@ public class Service {
 		}
 
 
-		public void setServiceTypeId(int serviceTypeId) {
-			ServiceTypeId = serviceTypeId;
+		public void setServiceTypeId(int servicetypeId) {
+			ServiceTypeId = servicetypeId;
 		}
 
 

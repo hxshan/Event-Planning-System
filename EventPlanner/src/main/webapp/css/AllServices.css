@@ -53,6 +53,7 @@ button:hover{
     display: flex;
     gap: 1rem;
     align-items: center;
+    outline: 2px solid #131E3A;
 }
 .service-card:hover{
     outline: 4px solid #F44336;
@@ -93,6 +94,12 @@ button:hover{
     justify-content: space-between;
     width: 100%;
     color: white;
+}
+.car-info-bottom h2{
+    font-weight: 800;
+    font-size: 1.8rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
 }
 .car-info-bottom h2{
     font-weight: 800;

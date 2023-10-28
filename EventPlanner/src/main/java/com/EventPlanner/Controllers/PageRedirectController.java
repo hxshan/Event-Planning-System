@@ -19,6 +19,8 @@ import com.EventPlanner.Models.Vendor;
 import com.EventPlanner.Services.EventService;
 import com.EventPlanner.Services.Services_Service;
 import com.EventPlanner.Services.VendorService;
+import com.oracle.wls.shaded.org.apache.xalan.templates.ElemAttributeSet;
+
 
 /**
  * Servlet implementation class PageRedirectController
@@ -88,6 +90,28 @@ public class PageRedirectController extends HttpServlet {
 		
 		
 		
+		else if (page.equalsIgnoreCase("AddService")) {
+			request.getRequestDispatcher("/WEB-INF/Views/AddService.jsp").forward(request, response);
+		}
+		else if (page.equalsIgnoreCase("VendorDashboard")) {
+			request.getRequestDispatcher("/WEB-INF/Views/VendorDashboard.jsp").forward(request, response);
+		}
+		else if (page.equalsIgnoreCase("AllVendorServices")) {
+			request.getRequestDispatcher("/WEB-INF/Views/AllVendorServices.jsp").forward(request, response);
+		}
+		
+		else if (page.equalsIgnoreCase("VendorAllServices")) {
+			int vendorId= Integer.parseInt(request.getParameter("vendorid"))   ;
+			
+			
+			VendorService vService = new VendorService();
+			List<Service> SList = vService.getVendorsServices(vendorId);
+			
+			System.out.println(vendorId);
+			
+			session.setAttribute("SVList", SList);
+			request.getRequestDispatcher("/WEB-INF/Views/AllVendorServices.jsp").forward(request, response);
+		}
 	}
 
 

@@ -11,8 +11,11 @@ import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 import com.EventPlanner.Models.Event;
 import com.EventPlanner.Models.EventType;
+import com.EventPlanner.Models.Service;
+import com.EventPlanner.Models.ServiceType;
 import com.EventPlanner.Models.User;
 import com.EventPlanner.Models.Vendor;
+import com.EventPlanner.Services.AddVendoService_Service;
 import com.EventPlanner.Services.EventService;
 import com.EventPlanner.Services.UserService;
 import com.EventPlanner.Services.VendorService;
@@ -64,13 +67,23 @@ public class LoginController extends HttpServlet {
 				}
 				else if(userType.compareToIgnoreCase("Vendor") ==0 ){
 					
+					
 					VendorService vendorservice=new VendorService();
-					Vendor vendor= vendorservice.getVendorDetails(email);		
+					Vendor vendor= vendorservice.getVendorDetails(email);
+					List<ServiceType> stypeList =  vendorservice.GetServiceType();
+					for(ServiceType s:stypeList){
+						System.out.println(s.getServiceId());
+					}
+					List<Service> servicesList = vendorservice.getVendorsServices(vendor.getId());
 					session.setAttribute("User",vendor);
-					
-					
-					RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/testVendor.jsp");
-					requestdispatcher.forward(request, response);
+					session.setAttribute("stypeList",stypeList);
+					session.setAttribute("servicesList",servicesList);
+				
+				
+				//redirect to page
+				RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/VendorDashboard.jsp");
+				requestdispatcher.forward(request, response);				
+	
 				}
 				
 				//redirect to page

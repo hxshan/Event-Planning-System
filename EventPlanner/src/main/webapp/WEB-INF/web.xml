@@ -76,6 +76,15 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+
+    <display-name>EditServiceImageController</display-name>
+    <servlet-name>EditServiceImageController</servlet-name>
+    <servlet-class>com.EventPlanner.Controllers.EditServiceImageController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditServiceImageController</servlet-name>
+    <url-pattern>/EditServiceImageController</url-pattern>
+
     <display-name>EventServicesController</display-name>
     <servlet-name>EventServicesController</servlet-name>
     <servlet-class>com.EventPlanner.Controllers.EventServicesController</servlet-class>

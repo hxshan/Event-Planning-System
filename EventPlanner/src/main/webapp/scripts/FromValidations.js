@@ -40,3 +40,27 @@ function validateUserRegisterForm() {
                 status=false; // Prevent submission
         } 
       }
+      
+      function ValidateEventDetailsForm(){
+		  var eventname = document.getElementById("EventName").value;
+		  var startdate = document.getElementById("startDate").value;
+		  var enddate = document.getElementById("endDate").value;
+		 
+		 if(eventname === "" || startdate === "" || enddate === ""){
+			   alert("All fields must be filled out!");
+			  return false;
+		 }
+		  return true;
+	  }
+      
+      function validateServiceDetailsForm(){
+		  var servicename = document.getElementById("Servicename").value;
+		  var description = document.getElementById("discription").value;
+		  var price = document.getElementById("price").value;
+		  
+		  if(servicename === "" || description === "" || price === ""){
+			  alert("All fields must be filled out!");
+			  return false;
+		  }
+		  return true; //all the details will be submitted to the mentioned JSP
+	  }
