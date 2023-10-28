@@ -32,12 +32,6 @@ public class Service {
 		
 
 
-		
-		public Service() {
-			
-		}
-
-
 		public int getServiceTypeId() {
 			return ServiceTypeId;
 		}

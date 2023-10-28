@@ -42,11 +42,8 @@ public class EditServiceImageController extends HttpServlet {
 		AddVendoService_Service Aservice=new AddVendoService_Service();
 		
 		
-		int Id=Integer.parseInt(request.getParameter("userId"));
-		Part image=request.getPart("profile-pic-input");
-		User user=userservice.getUserDetailsById(userId);
 		
-		 InputStream input = image.getInputStream();
+		 /*InputStream input = image.getInputStream();
 		 byte[] Imagedata =input.readAllBytes();
 		 int bytesRead;
          int offset = 0;
@@ -57,15 +54,12 @@ public class EditServiceImageController extends HttpServlet {
 		 
          String base64Image = Base64.getEncoder().encodeToString(Imagedata);
          
-         user.setEncodedImage(base64Image);
-		 userservice.updateProfileImage(user,userId);
-		 
+        
 		 
 		 //update the user sesisio data
 		 HttpSession session=request.getSession();
-		 session.setAttribute("User",user);
 		 response.sendRedirect("./EditProfileImageController");
-	
+	*/
 	}
 
 }
