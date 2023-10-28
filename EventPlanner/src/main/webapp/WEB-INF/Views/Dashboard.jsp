@@ -61,7 +61,7 @@
                    			 <div class="event-bottom">
                         			<div class="eventType">
                    			        	<img class="Event-icons" src="assets/icons/Event-star.png" alt="">
-                            		<p>Some text goes here</p> 
+                            		<p>${event.getEventType()}</p> 
                        			 </div>
                         			<div class="event-startdate">
                             			<img class="Event-icons" src="assets/icons/Time.png" alt="">

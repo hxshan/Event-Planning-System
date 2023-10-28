@@ -36,17 +36,7 @@ public class EditProfileImageController extends HttpServlet {
 		Part image=request.getPart("profile-pic-input");
 		User user=userservice.getUserDetailsById(userId);
 		 
-		/*
-		String imageName=image.getSubmittedFileName();
-		
-		 * String uuid = UUID.randomUUID().toString(); String uniqueFileName
-		 * =uuid+imageName; String uploadDirectory
-		 * ="C:/Users/LENOVO/git/Event-Planning-System/EventPlanner/src/main/webapp/uploads/"
-		 * +uniqueFileName; System.out.println(uploadDirectory);
-		 FileOutputStream output = new FileOutputStream(uploadDirectory);
-		 */
-		
-		 //save file to local folder
+
 		
 		 
 		 InputStream input = image.getInputStream();

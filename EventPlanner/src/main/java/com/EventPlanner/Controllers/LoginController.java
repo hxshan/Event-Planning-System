@@ -45,6 +45,14 @@ public class LoginController extends HttpServlet {
 				if( userType.compareToIgnoreCase("Organiser")==0 ){
 					List<Event> Elist=eventservice.getUsersEvents(user.getId());
 					List<EventType> etList=eventservice.getEventTypes();
+					
+					//Find the Event type from the event type id
+					for(Event event:Elist) {
+						event.setEventType(eventservice.getEventTypeById(event.getType_id()));
+					}
+					
+					
+					
 					session.setAttribute("etList", etList);
 					session.setAttribute("Elist", Elist);
 					session.setAttribute("User",user);

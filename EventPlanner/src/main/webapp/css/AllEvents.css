@@ -28,7 +28,7 @@ button:hover{
     border: none;
     height: 11rem;
     width: 100%;
-    background-color: rgba(19, 30, 58, .25);
+    background-color: #131E3A;
     padding: .8rem;
     display: flex;
     gap: 1rem;
@@ -36,7 +36,7 @@ button:hover{
     outline: 3px solid #131E3A;
 }
 .Event-card:hover{
-    background-color: rgba(32, 49, 94, 0.25);
+    background-color:#0e2152 ;
     outline: 4px solid #F44336;
     border-radius: 8px;
 }
@@ -45,11 +45,14 @@ button:hover{
 }
 .card-img{
     height: 100%;
-    width: 9rem;
+    width: 10rem;
+    
 }
 .card-img img{
     height: 100%;
     width: 100%;
+    border-radius: 8px;
+    outline: 2px solid white;
 }
 .card-info{
     height: 100%;
@@ -61,12 +64,17 @@ button:hover{
 .car-info-top h2{
     font-weight: 700;
     font-size: 1.7rem;
+    text-align: left;
+    padding-left: .5rem;
+    color: white;
 }
 .car-info-bottom{
     display: flex;
     justify-content: space-between;
     width: 100%;
     padding: 0 .5rem;
+    text-align: left;
+    color: white;
 }
 
 
@@ -77,6 +85,9 @@ button:hover{
     }
     .car-info-bottom{
        
-        padding: 0 3rem;
+        padding: 0 2rem;
+    }
+    .car-info-top h2{
+        padding-left: 2rem;
     }
 }

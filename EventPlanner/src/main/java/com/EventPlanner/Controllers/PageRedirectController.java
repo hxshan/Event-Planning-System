@@ -8,14 +8,17 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.EventPlanner.Models.Event;
 import com.EventPlanner.Models.Service;
 import com.EventPlanner.Models.User;
+import com.EventPlanner.Models.Vendor;
 import com.EventPlanner.Services.EventService;
 import com.EventPlanner.Services.Services_Service;
+import com.EventPlanner.Services.VendorService;
 
 /**
  * Servlet implementation class PageRedirectController
@@ -48,23 +51,39 @@ public class PageRedirectController extends HttpServlet {
 		else if(page.equalsIgnoreCase("serviceDetail")) {
 			session.setAttribute("activePage","none");
 			Services_Service S_service=new Services_Service();
-			int serviceId= Integer.parseInt( request.getParameter("serviceDetail"));
-			
-			
+			int serviceId= Integer.parseInt( request.getParameter("serviceId"));
+					
 			Service currentService= S_service.getServiceById(serviceId);
+			VendorService vendorservice=new VendorService();			
+			Vendor vendor = vendorservice.getVendorDetailsById(currentService.getVendorId());
+			
 			session.setAttribute("currentService",currentService);	
-			request.getRequestDispatcher("/WEB-INF/Views/AllServices.jsp").forward(request, response);
+			session.setAttribute("currentService_vendor",vendor);	
+			
+			request.getRequestDispatcher("/WEB-INF/Views/ServiceDetails.jsp").forward(request, response);
 			
 		}
 		else if(page.equalsIgnoreCase("AllEvents")) {
 			session.setAttribute("activePage","AllEvents");
 			EventService eventservice=new EventService();
-			int userid=Integer.parseInt(request.getParameter("userid"));
 			
+			int userid=Integer.parseInt(request.getParameter("userid"));
+			List<Event> UpcomingEvents=eventservice.getUsersEventsForDate(userid,LocalDate.now(),'U');
+			List<Event> PastEvents=eventservice.getUsersEventsForDate(userid,LocalDate.now(),'P');
+	
 			List<Event> Elist=eventservice.getUsersEvents(userid);
 			session.setAttribute("Elist", Elist);
+			session.setAttribute("UpcomingEvents", UpcomingEvents);
+			session.setAttribute("PastEvents", PastEvents); 
 			
 			request.getRequestDispatcher("/WEB-INF/Views/AllEvents.jsp").forward(request, response);
+		}
+		else if(page.equalsIgnoreCase("AllVendors")) {
+			session.setAttribute("activePage","AllVendors");
+			VendorService vendorservice=new VendorService();
+			List<Vendor> Vlist =vendorservice.getAllVendors();
+			session.setAttribute("Vlist", Vlist);
+			request.getRequestDispatcher("/WEB-INF/Views/AllVendors.jsp").forward(request, response);
 		}
 		
 		

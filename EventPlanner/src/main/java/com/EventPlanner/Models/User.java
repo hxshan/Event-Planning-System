@@ -20,7 +20,14 @@ public class User {
 		this.PhoneNumber=PhoneNumber;
 		this.Password=pwd;
 	}
-	
+	public User(int id,int typeid,String name,String email, String PhoneNumber,String pwd){
+		this.Id=id;
+		this.UserTypeId=typeid;
+		this.Name=name;
+		this.Email=email;
+		this.PhoneNumber=PhoneNumber;
+		this.Password=pwd;
+	}
 	
 	
 	public String getPhoneNumber() {

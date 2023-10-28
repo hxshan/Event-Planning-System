@@ -14,6 +14,12 @@ public class Event {
 	private String Status;
 	
 	
+	//Properties for Views 
+	private String EventType;
+	private String OwnerName;
+	
+	
+	
 	public Event() {
 		
 	}
@@ -83,5 +89,16 @@ public class Event {
 	public void setStatus(String status) {
 		Status = status;
 	}
-	
+	public String getEventType() {
+		return EventType;
+	}
+	public void setEventType(String eventType) {
+		EventType = eventType;
+	}
+	public String getOwnerName() {
+		return OwnerName;
+	}
+	public void setOwnerName(String ownerName) {
+		OwnerName = ownerName;
+	}
 }

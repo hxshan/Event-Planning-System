@@ -115,12 +115,21 @@
                 			<button class="nav-link">All Events</button>
                 		</c:when>
                 	</c:choose>
-                    
                 </form>
              </div>
              <div class="nav-desktop-item">
-                    <form action="" method="post">
-                        <button class="nav-link">Something</button>
+                    <form action="./PageRedirectController" method="get">
+                    	<input type="hidden" name="page" value="AllVendors">
+                    	<c:choose>
+                		<c:when test="${activePage eq AllVendors}">
+                			<button class="nav-link active">View Vendors</button>
+                		</c:when>
+                		<c:when test="${activePage ne AllVendors}">
+                			<button class="nav-link">View Vendors</button>
+                		</c:when>
+                	</c:choose>
+                    
+                        
                     </form>
              </div>
         </div>

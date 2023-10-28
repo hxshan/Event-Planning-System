@@ -22,11 +22,11 @@
 	<div class="allEvent-sec">
             <div class="Upcoming">
                 <h2 class="page-titles">Upcoming Events</h2>
-                <c:forEach var="event" items="${Elist}">
+                <c:forEach var="event" items="${UpcomingEvents}">
                 	<form class="Event" action="" method="post">
                     	<button class="Event-card">
                         	<div class="card-img">
-                            	<img src="event.jpg" alt="">
+                            	<img src="assets/images/event2.jpg" alt="">
                         	</div>
                         	<div class="card-info">
                             	<div class="car-info-top">
@@ -45,22 +45,24 @@
             </div>
             <div class="Events PastEvents">
                 <h2 class="page-titles">Past Events</h2>
-                <form class="Event" action="" method="post">
-                    <button class="Event-card">
-                        <div class="card-img">
-                            <img src="event.jpg" alt="">
-                        </div>
-                        <div class="card-info">
-                            <div class="car-info-top">
-                                <h2>Service Name</h2>
-                            </div>
-                            <div class="car-info-bottom">
-                                <h2>From<br>2023/20/20</h2>
-                                <h2>To<br>2023/20/20</h2>
-                            </div>
-                        </div>
-                    </button>
-                </form>
+               <c:forEach var="event" items="${PastEvents}">
+                	<form class="Event" action="" method="post">
+                    	<button class="Event-card">
+                        	<div class="card-img">
+                            	<img src="assets/images/event2.jpg" alt="">
+                        	</div>
+                        	<div class="card-info">
+                            	<div class="car-info-top">
+                                	<h2>${event.getName()}</h2>
+                            	</div>
+                            	<div class="car-info-bottom">
+                                	<h2>From<br>${event.getStartdate()}</h2>
+                                	<h2>To<br>${event.getEnddate()}</h2>
+                            	</div>
+                        	</div>
+                    	</button>
+                	</form>
+                </c:forEach>
             </div>
         </div>
 	

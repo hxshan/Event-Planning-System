@@ -15,6 +15,7 @@ import java.util.List;
 
 import com.EventPlanner.Models.Event;
 import com.EventPlanner.Models.EventType;
+import com.EventPlanner.Models.Service;
 import com.EventPlanner.Services.EventService;
 
 public class EventController extends HttpServlet {
@@ -56,6 +57,11 @@ public class EventController extends HttpServlet {
 			eventservice.addEvent(event);
 			
 			List<Event> Elist=eventservice.getUsersEvents(userid);
+			
+			for(Event E:Elist) {
+				E.setEventType(eventservice.getEventTypeById(E.getType_id()));
+			}
+			
 			session.setAttribute("Elist", Elist);
 
 			/*RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/Dashboard.jsp");
@@ -70,10 +76,11 @@ public class EventController extends HttpServlet {
 			Event event = eventservice.getEventDetails(eventId);
 			int userid=Integer.parseInt(request.getParameter("userId"));
 			
-			
-			
-			
+	    	List<Service> EventServicesList = eventservice.getEventsItems(eventId);
+	    	
+	    	session.setAttribute("EventServicesList", EventServicesList);		
 			session.setAttribute("currentEvent", event);	
+			
 			RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/EventDetails.jsp");
 			requestdispatcher.forward(request, response);
 			
@@ -88,6 +95,9 @@ public class EventController extends HttpServlet {
 			eventservice.deleteEvent(eventId);
 			
 			List<Event> Elist=eventservice.getUsersEvents(userid);
+			for(Event E:Elist) {
+				E.setEventType(eventservice.getEventTypeById(E.getType_id()));
+			}
 			
 			session.setAttribute("Elist", Elist);
 			response.sendRedirect("./EventController");

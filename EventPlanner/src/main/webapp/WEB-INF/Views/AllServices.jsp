@@ -23,7 +23,7 @@
 	
 	<div class="allservices-sec">
             <div class="serachbar">
-                <form action="" method="get">
+                <form action="./searchServiceController" method="post">
                     <input type="search" class="search-field" name="search" id="search">
                     <button type="submit" class="search-button">
                         Search

@@ -72,6 +72,33 @@ public class Services_Service {
 		
 		return service;
 	}
+	public List<Service> searchService(String search) {
+		Connection con =DBConnectionUtil.getDBConnection();
+		List<Service> serviceList=new ArrayList<Service>();
+		String sql="select * from service where name like ? ;";
+		PreparedStatement stmt;
+		ResultSet rs=null;
+		try {
+			stmt = con.prepareStatement(sql);
+			stmt.setString(1, "%" + search + "%");
+			rs=stmt.executeQuery();
+			while(rs.next()) {
+					int id=rs.getInt("id");
+					int serviceTypeId=rs.getInt("service_type_id");
+					int vendorId=rs.getInt("vendor_id");
+					String name=rs.getString("name");
+					String description=rs.getString("description");
+					BigDecimal price=rs.getBigDecimal("price");
+					serviceList.add(new Service(id,serviceTypeId,vendorId,name,description,price));		
+			}
+		} catch (SQLException e) {
+			ErrorLoggerUtil.logError("Services_Service(searchService)","SQL ERROR: ", e);
+		}finally {
+			DBConnectionUtil.closeConnection(con);
+		}
+		
+		return serviceList;
+	}
 	
 	
 }

@@ -64,7 +64,7 @@
     <servlet-name>UpdateUserController</servlet-name>
     <url-pattern>/UpdateUserController</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>ServiceController</display-name>
     <servlet-name>ServiceController</servlet-name>
@@ -74,6 +74,24 @@
     <servlet-name>ServiceController</servlet-name>
     <url-pattern>/ServiceController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EventServicesController</display-name>
+    <servlet-name>EventServicesController</servlet-name>
+    <servlet-class>com.EventPlanner.Controllers.EventServicesController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EventServicesController</servlet-name>
+    <url-pattern>/EventServicesController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>searchServiceController</display-name>
+    <servlet-name>searchServiceController</servlet-name>
+    <servlet-class>com.EventPlanner.Controllers.searchServiceController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>searchServiceController</servlet-name>
+    <url-pattern>/searchServiceController</url-pattern>
+  </servlet-mapping>
 </web-app>
-
-
