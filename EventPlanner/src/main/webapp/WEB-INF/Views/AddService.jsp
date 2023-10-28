@@ -46,10 +46,16 @@
               <option value="${ServiceType.getServiceId()}">${ServiceType.getType()} </option>
               </c:forEach>          
    </select>
-   </div>
+   </div> <br>
 	<div>
     <button class="formbold-btn" type="submit">
        Save
+     </button>
+     </div>
+     
+     <div>
+    <button class="formbold-btn2" type="submit">
+       Already Have Services
      </button>
      </div>
  </form>

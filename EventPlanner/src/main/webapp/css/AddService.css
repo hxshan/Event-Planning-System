@@ -48,12 +48,27 @@
     outline: none;
     resize: none;
   }
+  
+  
   .formbold-form-input:focus {
     border-color: #131E3A;
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
   }
 
   .formbold-btn {
+    text-align: center;
+    font-size: 16px;
+    border-radius: 6px;
+    padding: 14px 32px;
+    border: none;
+    font-weight: 600;
+    background-color: #131E3A;
+    color: white;
+    cursor: pointer;
+  }
+  
+   .formbold-btn2 {
+	float: right;
     text-align: center;
     font-size: 16px;
     border-radius: 6px;
