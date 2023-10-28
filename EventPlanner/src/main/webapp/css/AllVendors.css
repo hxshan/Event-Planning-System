@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -12,7 +11,8 @@ body{
 button:hover{
     cursor: pointer;
 }
-.allservices-sec{
+
+.allStores-sec{
     width: 100%;
     padding: 1rem 1rem;
 }
@@ -41,28 +41,37 @@ button:hover{
     cursor:pointer;
     background:#aaa;
 }
-.services-con{
+.Stores-con{
     margin-top: 1rem;
+   
 }
-.service-card{
+.Stores{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+.Store-card{
     margin-top: 1.5rem;
-    height: 11rem;
+    height: 19rem;
     width: 100%;
     background-color:#131E3A;
-    padding: .8rem;
+    padding: 1.5rem;
     display: flex;
-    gap: 1rem;
     align-items: center;
-    outline: 2px solid #131E3A;
+    color: white;
 }
-.service-card:hover{
+.Store-card:hover{
+    background-color:#131E3A;
+    color: white;
     outline: 4px solid #F44336;
     border-radius: 8px;
-    background-color:#0a1d4b;
 }
 .card-img{
-    height: 100%;
-    width: 9rem;
+    height:14rem;
+    width: 12rem;
+    margin-bottom: 1rem;
 }
 .card-img img{
     height: 100%;
@@ -70,52 +79,20 @@ button:hover{
     outline:2px solid white;
     border-radius: 8px;
 }
+
 .card-info{
-    height: 100%;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    text-align: left;
+    padding-left: 2rem;
 }
 .car-info-top{
-    text-align: left;
-}
-.car-info-top h2{
-    color: white;
-    font-size: 1.8rem;
-}
-.car-info-top p{
-    color: #F44336;
-    font-weight: 700;
-    
-}
-.car-info-bottom{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    color: white;
-}
-.car-info-bottom h2{
-    font-weight: 800;
-    font-size: 1.8rem;
-    padding-right: 2rem;
-    padding-bottom: 1rem;
-}
-.car-info-bottom h2{
-    font-weight: 800;
-    font-size: 1.8rem;
-    padding-right: 2rem;
-    padding-bottom: 1rem;
+    margin-bottom: 3rem;
 }
 
-.car-info-bottom p{
-    width: 65%;
-    color: #131E3A;
-    padding-top: 1rem;
-    text-align: left;
-}
+
 @media screen and (min-width:1023px){
-    .allservices-sec{
+    .allStores-sec{
         padding-left: 17rem;
         padding-right:4vw; 
     }

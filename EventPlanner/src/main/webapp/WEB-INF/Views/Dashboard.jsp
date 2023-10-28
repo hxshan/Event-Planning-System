@@ -60,9 +60,8 @@
                     			<h3>${event.getName()}</h3>
                    			 <div class="event-bottom">
                         			<div class="eventType">
-                   			        			 <img class="Event-icons" src="assets/icons/Event-star.png" alt="">
-                            		
-                            		<p>Some text goes here</p> 
+                   			        	<img class="Event-icons" src="assets/icons/Event-star.png" alt="">
+                            		<p>${event.getEventType()}</p> 
                        			 </div>
                         			<div class="event-startdate">
                             			<img class="Event-icons" src="assets/icons/Time.png" alt="">
@@ -70,7 +69,7 @@
                     			    </div>
                     			</div>
                  				<div class="event-btns-con">
-                    			    				<form action="./EventController" method="post">
+                    			    	<form action="./EventController" method="post">
                             				<input type="hidden" name="triggerType" value="EditEvent"/>
                             				<input type="hidden" name="eventId" value="${event.getId()}"/>
                             				<input type="hidden" name="userId" value="${User.getId()}"/>

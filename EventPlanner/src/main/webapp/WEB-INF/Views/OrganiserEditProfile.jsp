@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,14 +21,14 @@
         <div class="user-info">
             <div class="user-pfp-edit">
             	<c:choose>
-            		<c:when test="${User.getImageId()==NULL}">
+            		<c:when test="${empty User.getEncodedImage()}">
             			<div class="user-picture">
                     		<img src="assets/icons/MaleUser.png" alt="profile-pic">
                			</div>
             		</c:when>
-            		<c:when test="${User.getImageId()!=NULL}">
+            		<c:when test="${not empty User.getEncodedImage()}">
             			<div class="user-picture">
-                    		<img src="uploads/${User.getImageName()}" alt="profile-pic">
+            			<img src="data:image/jpeg;base64,${User.getEncodedImage()}" alt="Image">	
                			</div>
             		</c:when>
             	</c:choose>

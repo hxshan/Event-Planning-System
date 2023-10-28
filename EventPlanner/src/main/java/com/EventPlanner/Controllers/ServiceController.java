@@ -35,11 +35,10 @@ public class ServiceController extends HttpServlet {
 		AddVendoService_Service addvendorService = new AddVendoService_Service();
 		HttpSession session=request.getSession();
 		
-		
-		
 		//Add service Servlet
 		
 		if(triggerType.equalsIgnoreCase("AddService")) {
+
 		
 		int VendorId=Integer.parseInt(request.getParameter("userId")) ;
 		int ServiceTypeId=Integer.parseInt(request.getParameter("TypeId")) ;

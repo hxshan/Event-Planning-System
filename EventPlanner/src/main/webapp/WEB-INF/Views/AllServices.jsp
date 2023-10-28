@@ -23,7 +23,7 @@
 	
 	<div class="allservices-sec">
             <div class="serachbar">
-                <form action="" method="get">
+                <form action="./searchServiceController" method="post">
                     <input type="search" class="search-field" name="search" id="search">
                     <button type="submit" class="search-button">
                         Search
@@ -37,7 +37,10 @@
                 
                 <div class="services">
                 	<c:forEach var="service" items="${SList}">
-                		<div class="service-card">
+                	<form action="./PageRedirectController" method="get">
+                		<input type="hidden" name="page" value="serviceDetail">
+                		<input type="hidden" value="${service.getId()}" name="serviceId" >
+                		<button class="service-card">
                 	        <div class="card-img">
                 	            <img src="assets/images/service-placeholder.jpg" alt="">
                 	        </div>
@@ -51,7 +54,8 @@
                 	                <h2>${service.getPrice()}</h2>      
                 	            </div>
                 	        </div>
-                	    </div>
+                	    </button>
+                	    </form>
                 	</c:forEach> 
                 </div>
          

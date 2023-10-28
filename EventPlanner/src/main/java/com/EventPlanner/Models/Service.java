@@ -11,6 +11,13 @@ public class Service {
 		private BigDecimal price;
 		
 		
+		//for views only :)
+		private String VendorName;
+		
+		
+		public Service() {
+			
+		}
 		
 		
 		public Service(int id,int vendorId,int ServiceTypeId,String ServiceName,String Description, BigDecimal price) {
@@ -88,6 +95,14 @@ public class Service {
 
 		public void setId(int id) {
 			Id = id;
+		}
+
+		public String getVendorName() {
+			return VendorName;
+		}
+
+		public void setVendorName(String vendorName) {
+			VendorName = vendorName;
 		}
 		
 		

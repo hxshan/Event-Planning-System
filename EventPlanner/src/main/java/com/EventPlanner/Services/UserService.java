@@ -1,9 +1,14 @@
 package com.EventPlanner.Services;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Base64;
 
 import com.EventPlanner.Models.User;
 import com.EventPlanner.Utils.*;
@@ -35,15 +40,15 @@ public class UserService {
 				
 		}
 		
-		public void updateUser(int userId,String name,String email,String phoneNum) {
+		public void updateUser(int userid,String Name,String Email,String PhoneNumber) {
 			Connection con = DBConnectionUtil.getDBConnection();
 			String sql="Update users set name=?,email=?,PhoneNumber=? where id=?;";
 			try {
 				PreparedStatement stmt = con.prepareStatement(sql);
-				stmt.setString(1, name);
-				stmt.setString(2,email);
-				stmt.setString(3,phoneNum);
-				stmt.setInt(4,userId);
+				stmt.setString(1, Name);
+				stmt.setString(2, Email);
+				stmt.setString(3,PhoneNumber);
+				stmt.setInt(4,userid);
 				stmt.executeUpdate();
 				stmt.close();
 			} catch (SQLException e) {
@@ -97,8 +102,7 @@ public class UserService {
 					user.setEmail(rs.getString("email"));
 					user.setPhoneNumber(rs.getString("PhoneNumber"));
 					user.setUserTypeId(rs.getInt("user_type_id"));
-					user.setImageId(rs.getString("imageId"));
-					user.setImageName(rs.getString("imageName"));
+					user.setEncodedImage(rs.getString("encodedImage"));
 				}
 				rs.close();
 				stmt.close();
@@ -114,14 +118,13 @@ public class UserService {
 			return user;
 		}
 		
-		public User getUserDetailsById(String id) {
+		public User getUserDetailsById(int id) {
 			Connection con = DBConnectionUtil.getDBConnection();		
 			String sql="select * from users where id=?";
 			User user=new User();
-			int intId=Integer.parseInt(id);
 			try {
 				PreparedStatement stmt=con.prepareStatement(sql);
-				stmt.setInt(1,intId);
+				stmt.setInt(1,id);
 				ResultSet rs=stmt.executeQuery();
 				
 				if(rs.next())
@@ -131,8 +134,9 @@ public class UserService {
 					user.setEmail(rs.getString("email"));
 					user.setPhoneNumber(rs.getString("PhoneNumber"));
 					user.setUserTypeId(rs.getInt("user_type_id"));
-					user.setImageId(rs.getString("imageId"));
-					user.setImageName(rs.getString("imageName"));
+					user.setEncodedImage(rs.getString("encodedImage"));
+	                 
+	                
 				}
 				rs.close();
 				stmt.close();
@@ -231,14 +235,13 @@ public class UserService {
 			
 		}
 			
-		public void updateProfileImage(String uuid,String filename,String userId) {
+		public void updateProfileImage(User user,int userid) {
 			Connection con = DBConnectionUtil.getDBConnection();
-			String sql="update users set imageName =? ,imageId=? where id = ?;";
+			String sql="update users set encodedImage=? where id = ?;";
 			try {
-				PreparedStatement stmt = con.prepareStatement(sql);
-				stmt.setString(1,filename);
-				stmt.setString(2,uuid);
-				stmt.setString(3,userId);
+				PreparedStatement stmt = con.prepareStatement(sql);			
+				stmt.setString(1, user.getEncodedImage());
+				stmt.setInt(2, userid);
 				stmt.executeUpdate();
 				
 			} catch (SQLException e) {

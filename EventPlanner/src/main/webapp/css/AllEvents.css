@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    overflow-x: hidden;
+    background-color: #F1F1F1;
+}
+button:hover{
+    cursor: pointer;
+}
+.allEvent-sec{
+    width: 100%;
+    padding: 1rem 1rem;
+}
+.page-titles{
+    font-size: 2rem;
+    text-decoration: underline;
+}
+.Events{
+    margin-top: 1rem;
+}
+.Event-card{
+    margin-top: 1.5rem;
+    border: none;
+    height: 11rem;
+    width: 100%;
+    background-color: #131E3A;
+    padding: .8rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    outline: 3px solid #131E3A;
+}
+.Event-card:hover{
+    background-color:#0e2152 ;
+    outline: 4px solid #F44336;
+    border-radius: 8px;
+}
+.PastEvents{
+    margin-top: 3.5rem;
+}
+.card-img{
+    height: 100%;
+    width: 10rem;
+    
+}
+.card-img img{
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    outline: 2px solid white;
+}
+.card-info{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.car-info-top h2{
+    font-weight: 700;
+    font-size: 1.7rem;
+    text-align: left;
+    padding-left: .5rem;
+    color: white;
+}
+.car-info-bottom{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 .5rem;
+    text-align: left;
+    color: white;
+}
+
+
+@media screen and (min-width:1023px){
+    .allEvent-sec{
+        padding-left: 17rem;
+        padding-right:4vw; 
+    }
+    .car-info-bottom{
+       
+        padding: 0 2rem;
+    }
+    .car-info-top h2{
+        padding-left: 2rem;
+    }
+}
