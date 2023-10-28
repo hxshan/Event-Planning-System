@@ -3,84 +3,165 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/DashStyle.css">
+    <link rel="stylesheet" href="css/Navs-Modals.css">
+    <title>Dashboard</title>
 </head>
 <body>
-   <!-- <header class="header">
+    <header class="header">
         <button type="button" class="nav_btn" id="nav_btn" onclick="openNavbar()">
-            <img src="assets/icons/Menu.png" alt="menu-btn">
+            <img src="Menu.png" alt="menu-btn">
         </button>
         <div class="user-pfp">
             <button name="button" value="AddEvent" id="addEventBtn" class="addEventBtn-desk" onclick="openEventForm()">
-                <img src="assets/icons/Plus.png" alt="Add event">
-                <p>Add Event
+                <img src="Plus.png" alt="Add event">
+                <p>Add Service
                 </p>             
             </button>
             <button name="button" value="AddEvent" id="addEventBtnmob" class="addEventBtn-mob" onclick="openEventForm()">
-                <img src="assets/icons/Plus.png" alt="Add event">
+                <img src="Plus.png" alt="Add event">
             </button>
             <div class="user-pfp-img">
-                <form action="./PageRedirectController" method="get">
-                	<input type="hidden" name="page" value="org-profile">
+                <form action="" method="get">
+                    <input type="hidden" name="page" value="org-profile">
                     <button class="user-pfp-img-btn" type="submit">
-                        <img src="assets/icons/MaleUser.png" alt="pfp">
+                        <img src="MaleUser.png" alt="pfp">
                     </button>
                 </form>                      
             </div> 
         </div>
-    </header> -->
-     <%@ include file="NavBar.jsp" %>
+    </header>
     <main>
-        <%@ include file="NavMenus.jsp" %>
+        <div class="nav-background" id="nav-background">       
+            <div class="nav-bar slideRight" id="nav-bar">
+                <button type="button" class="nav-close" id="nav-close" onclick="closeNavbar()">
+                    <img src="Multiply.png" alt="Close">
+                </button>
+
+                <div class="nav-item" id="Dashboard">
+                    <button class="nav-link">
+                        Dashboard
+                    </button>
+                </div>
+                <div class="nav-item" id="AllEvents">
+                    <button class="nav-link">
+                        All Services 
+                    </button>
+                </div>
+                <div class="nav-item" id="Something">
+                    <button class="nav-link">
+                        Orders
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="Modal" class="modal">
+            <div class="modal-content slideDown">
+                <div class="closeBtn-con">
+                    <button name="button" value="closeEventForm" id="closeEventForm" class="eventClose" onclick="closeEventForm()">
+                        <img src="Multiply.png" alt="Close">
+                    </button>
+                </div>
+                <div class="modal-header">
+                   <h2>New Service</h2>
+               </div>
+                <div class="modal-body">
+                     <form class="addEvent-form" action="./ServiceController" method="post">
+                        <input type="hidden" name="triggerType" value="AddService"/>
+                        <input type="hidden" name="userId" value="${User.getId()}"/>
+                       
+                         <div class="form-row">
+                               <label for="vendor">Providing Service Name</label>
+                               <input id="vendor" name="Servicename"
+                               placeholder="Your Service Name" type="text" />
+                         </div>
+   
+                         <div class="form-row">
+                               <label for="vendor">Service Description</label>
+                               <input id="vendor" name="description" placeholder="Service Description" type="text" />
+                         </div>
+   
+                             <div class="form-row">
+                               <label for="vendor">Price</label>
+                               <input id="vendor" name="price" placeholder="Price" type="number" />
+                         </div>
+                 
+                         <div class="form-row">
+                               <label for="ServiceType">Service Type</label>
+                               <select class="eventType-select" name="TypeId" id="ServiceType">
+                                   <option value="NULL">Select Type</option>
+                  
+                                 <c:forEach var="ServiceType" items="${stypeList}">
+                                         <option value="${ServiceType.getServiceId()}">${ServiceType.getType()} </option>
+                                     </c:forEach>
+                 
+                               </select>
+                          </div>
+                          <button type="submit">Save</button>
+                     </form>
+                 </div>
+            </div>
+        </div>
         
+        <div class="nav-desktop">
+            <div class="logo">
+                <img src="ELOGO-dashboard.png" alt="">   
+            </div>
+            <div class="nav-desktop-item">
+                <form action="">
+                    <button class="nav-link active">
+                        Dashboard
+                    </button>
+                </form> 
+            </div>
+            <div class="nav-desktop-item">
+                <button class="nav-link not-active">
+                         All services
+                 </button>
+             </div>
+             <div class="nav-desktop-item">
+                <button class="nav-link">
+                         Orders
+                 </button>
+             </div>
+        </div>
         <div class="Dashboard-content">
             <div class="recentEvents-con" id="recentEvents-con">
-                <h2>Dashboard</h2>
-               	<c:choose>
-    				<c:when test="${empty Elist}">      
-        				<div class="event-empty">
-                    		<img src="assets/images/no-event.png" alt="no-event">
-                		</div>
-    				</c:when>
-    				<c:otherwise>     
-        				<c:forEach var="event" items="${Elist}">
-                			<div class="event">
-                    			<h3>${event.getName()}</h3>
-                   			 <div class="event-bottom">
-                        			<div class="eventType">
-                   			        			 <img class="Event-icons" src="assets/icons/Event-star.png" alt="">
-                            		
-                            		<p>Some text goes here</p> 
-                       			 </div>
-                        			<div class="event-startdate">
-                            			<img class="Event-icons" src="assets/icons/Time.png" alt="">
-                            			<p>${event.getStartdate()}</p> 
-                    			    </div>
-                    			</div>
-                 				<div class="event-btns-con">
-                    			    				<form action="./EventController" method="post">
-                            				<input type="hidden" name="triggerType" value="EditEvent"/>
-                            				<input type="hidden" name="eventId" value="${event.getId()}"/>
-                            				<input type="hidden" name="userId" value="${User.getId()}"/>
-                            				<button class="event-buttons" type="submit">
-                                				<img src="assets/icons/view more btn.png" alt="">
-                            				</button>
-                        				</form>
-                        				<form action="./EventController" method="post">
-                            				<input type="hidden" name="triggerType" value="DeleteEvent"/>
-                            				<input type="hidden" name="eventId" value="${event.getId()}"/>
-                            				<input type="hidden" name="userId" value="${User.getId()}"/>
-                            				<button class="event-buttons" type="submit">
-                                				<img src="assets/icons/Delete btn.png" alt="">
-                           	 				</button>
-                        				</form>
-                    				</div>
-                			</div>
-                		</c:forEach>
-    				</c:otherwise>
-				</c:choose>
-
+                <h2 class="dashboard-title">Upcoming orders</h2>
+                <!--<div class="event-empty">
+                    <img src="no-event.png" alt="">
+                </div>-->
+                <div class="event">
+                    <h3>Order name</h3>
+                    <div class="event-bottom">
+                        <div class="eventType">
+                            <img class="Event-icons" src="Event-star.png" alt="">
+                            <p>Birthday Party</p> 
+                        </div>
+                        <div class="event-startdate">
+                            <img class="Event-icons" src="Time.png" alt="">
+                            <p>2023/10/25</p> 
+                        </div>
+                    </div>
+                    <div class="event-btns-con">
+                        <form action="" method="post">
+                            <input type="hidden" name="" value="">
+                            <button class="event-buttons" type="submit">
+                                <img src="view more btn.png" alt="">
+                            </button>
+                        </form>
+                        <form action="" method="post">
+                            <input type="hidden" name="" value="">
+                            <button class="event-buttons" id="delete-btn" type="submit">
+                                <img src="Delete btn.png" alt="">
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
             <div class="dashboard-bottom">
                 <div class="Report-con" id="Report-con">
@@ -119,9 +200,31 @@
             </div>
         </div>
     </main>
-   <script src="scripts/NavigationModals.js"></script>
-    <script>
-      //Genarating calender
+    <script src="NavigationModals.js"></script>
+<script>
+    /*const navOpen_Btn=document.getElementById("nav_btn");
+    const navClose_Btn=document.getElementById("nav-close");
+    const nav_bar=document.getElementById("nav-background");
+
+    const openModalBtn_mobile = document.getElementById("addEventBtnmob");
+    const openModalBtn_desktop = document.getElementById("addEventBtn");
+    const closeModalBtn = document.getElementById("closeEventForm");
+    const modal = document.getElementById("Modal");
+
+    closeEventForm=()=>{
+        modal.style.display = "none";
+    }
+    closeNavbar=()=>{
+        nav_bar.style.display='none'
+    }
+    openEventForm=()=>{
+        modal.style.display = "flex";
+    }
+    openNavbar=()=>{
+        nav_bar.style.display='flex'
+    }     */
+    
+    //Genarating calender
       const today = new Date()
             //console.log(today)
             const year = today.getFullYear()
@@ -160,8 +263,8 @@
                 calendarBody.lastElementChild.appendChild(cell);
               }
             }
-    </script>
-</body>
-</html>
+ 
+</script>
+
 </body>
 </html>
