@@ -102,7 +102,7 @@ public class UserService {
 					user.setEmail(rs.getString("email"));
 					user.setPhoneNumber(rs.getString("PhoneNumber"));
 					user.setUserTypeId(rs.getInt("user_type_id"));
-					user.setEncodedImage(rs.getString("Image"));
+					user.setEncodedImage(rs.getString("image"));
 				}
 				rs.close();
 				stmt.close();
@@ -134,7 +134,7 @@ public class UserService {
 					user.setEmail(rs.getString("email"));
 					user.setPhoneNumber(rs.getString("PhoneNumber"));
 					user.setUserTypeId(rs.getInt("user_type_id"));
-					user.setEncodedImage(rs.getString("Image"));
+					user.setEncodedImage(rs.getString("image"));
 	                 
 	                
 				}
@@ -237,7 +237,7 @@ public class UserService {
 			
 		public void updateProfileImage(User user,int userid) {
 			Connection con = DBConnectionUtil.getDBConnection();
-			String sql="update users set encodedImage=? where id = ?;";
+			String sql="update users set image=? where id = ?;";
 			try {
 				PreparedStatement stmt = con.prepareStatement(sql);			
 				stmt.setString(1, user.getEncodedImage());
