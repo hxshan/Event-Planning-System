@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet"  type="text/css" href="css/OrganiserInfo.css" />
+<link rel="stylesheet"  type="text/css" href="css/ServiceInfo.css" />
 <link rel="stylesheet" type="text/css" href="css/Navs-Modals.css">
 <title>Edit Service Details</title>
 </head>
@@ -21,8 +21,8 @@
         <div class="user-info">
         
           
-            <div class="userdetails">
-            <div class="user-pfp-edit">
+            <div class="servicedetails">
+            <div class="service-pfp-edit">
             	<c:choose>
             		<c:when test="${empty User.getEncodedImage()}">
             			<div class="user-picture">
@@ -30,8 +30,8 @@
                			</div>
             		</c:when>
             		<c:when test="${not empty User.getEncodedImage()}">
-            			<div class="user-picture">
-            			<img src="data:image/jpeg;base64,${User.getEncodedImage()}" alt="Image">	
+            			<div class="service-picture">
+            				<img src="data:image/jpeg;base64,${currentService.getEncodedImage()}" alt="Image">	
                			</div>
             		</c:when>
             	</c:choose>
@@ -40,14 +40,14 @@
                         Edit
                     </label>
                     <input type="file" class="profile-pic-input" name="profile-pic-input" id="profile-pic-input"> 
-                    <input type="hidden" value="${User.getId()}" name="userId">           
+                    <input type="hidden" value="${currentService.getId()}" name="userId">           
                     <button type="submit" class="submit-btn-img">
                         Save image
                     </button>
                 </form>
             </div>
             	
-                <form class="userdetails-form" action="./EditVendorServiceDetails" method="post">
+                <form class="servicedetails-form" action="./EditVendorServiceDetails" method="post">
                 	<input type="hidden" value="${currentService.getId()}" name="Id">
                 	<input type="hidden" value="${User.getId()}" name="userId">
                     <div class="form-group">

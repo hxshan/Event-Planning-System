@@ -9,6 +9,7 @@ public class Service {
 		private  String ServiceName;
 		private String Description;
 		private BigDecimal price;
+		private String image;
 		
 		
 		//for views only :)
@@ -119,6 +120,16 @@ public class Service {
 
 		public void setVendorname(String vendorname) {
 			this.vendorname = vendorname;
+		}
+
+
+		public String getImage() {
+			return image;
+		}
+
+
+		public void setImage(String image) {
+			this.image = image;
 		}
 		
 		

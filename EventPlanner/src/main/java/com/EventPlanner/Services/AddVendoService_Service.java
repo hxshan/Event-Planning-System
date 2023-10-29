@@ -10,6 +10,7 @@ import com.EventPlanner.Models.Service;
 
 
 import com.EventPlanner.Utils.DBConnectionUtil;
+import com.EventPlanner.Utils.ErrorLoggerUtil;
 
 
 public class AddVendoService_Service  {
@@ -39,22 +40,8 @@ public class AddVendoService_Service  {
 		DBConnectionUtil.closeConnection(con);
 	}
 }
-	public void deleteService(int serviceId) {
-		Connection con = DBConnectionUtil.getDBConnection();
-		String sql = "delete from service where id=?";
-		
-		try {
-			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, serviceId);
-			pstmt.executeQuery();
-			pstmt.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			DBConnectionUtil.closeConnection(con);
-		}
-		
-	}
+	
+	
 	
 	
 	
@@ -80,6 +67,7 @@ public class AddVendoService_Service  {
 				service.setServiceName(rSet.getString("name"));
 				service.setDescription(rSet.getString("description"));
 				service.setPrice(rSet.getBigDecimal("price"));
+				service.setImage(rSet.getString("image"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -87,9 +75,23 @@ public class AddVendoService_Service  {
 		return service;
 		
 	}
-	
-	
-	
+
+	public void deleteService(int serviceId) {
+		Connection con = DBConnectionUtil.getDBConnection();
+		String sql = "delete from service where id=?";
+		
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, serviceId);
+			pstmt.executeUpdate();
+			pstmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBConnectionUtil.closeConnection(con);
+		}
+		
+	}
 	
 
 }

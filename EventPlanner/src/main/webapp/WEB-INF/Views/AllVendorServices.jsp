@@ -48,7 +48,7 @@
                                 				<img src="assets/icons/view more btn.png" alt="">
                             				</button>
                         				</form>
-                        				<form action="./ServiceController" method="post">
+                        				<form action="./VendorServiceController" method="post">
                             				<input type="hidden" name="triggerType" value="DeleteService"/>
                             				<input type="hidden" name="serviceId" value="${service.getId()}"/>
                             				<input type="hidden" name="vendorId" value="${User.getId()}"/>
