@@ -41,7 +41,7 @@
 	                                <p>${service.getServiceName()}</p>
 	                                <div class="service-data-vendor">
 	                                    <p>Vedor Name</p>
-	                                    <p>${service.getPrice()}</p>
+	                                    <p id="service-price">${service.getPrice()}</p>
 	                                </div>
 	                            </div>
 	                        </div>
@@ -71,10 +71,30 @@
                     Add Service
                  </button> 
              </form>
-             
+             <div class="total-price">
+                    <h2>Total</h2>
+                    <h2 class="total">Rs.<span id="price"></span></h2>
+               </div>
         </div>
 	
 </main>
 <script src="scripts/NavigationModals.js"></script>
+<script type="text/javascript">
+
+var prices = document.querySelectorAll("#service-price");
+const price = document.getElementById("price");
+
+if (prices.length == 0) {
+  price.innerText = "0.00";
+} else {
+  let tot = 0;
+  prices.forEach((p) => {
+    tot += parseFloat(p.textContent); 
+  });
+  price.innerText = tot.toFixed(2);
+}
+	
+
+</script>
 </body>
 </html>

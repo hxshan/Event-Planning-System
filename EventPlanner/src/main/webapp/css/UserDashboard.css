@@ -111,17 +111,10 @@ table {
     font-size: 1.5rem;
     color: #131E3A;
 }
-.report{
-    width: 20rem;
-    height:200px;
-    border: 1px solid #131E3A;
-    margin: 1rem 0;
-}
 .event-btns-con{
     display: flex;
     justify-content: end;
     width: 100%;
-
 }
 .event-btns-con >form{
     padding-right: .5rem;
@@ -132,6 +125,42 @@ table {
 }
 .event-buttons:hover{
     cursor: pointer;
+}
+
+.report{
+    width:20rem;
+    height: auto;
+    display: flex;
+    
+}
+.report form{
+    width:100%;
+    height: 100%;
+    display: flex;
+}
+.vendor{
+    width:100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background-color: #131E3A;
+    color: white;
+    border-radius: 8px;
+}
+.vimage{
+    width:100%;
+    height: 100%; 
+    outline: 2px solid white;
+    border-radius: 8px;
+}
+.vinfo{
+    margin-left: 1rem;
+    margin-top: 2rem;
+}
+.vimage img{
+    width:100%; 
 }
 
 @media screen and (min-width:767px) {
@@ -148,6 +177,11 @@ table {
         width: 100%;
         padding: 1rem 2.5rem;
     }
+    .report{
+        width:23rem;
+        height: auto;
+        display: flex;
+    }
 }
 @media screen and (min-width:1023px){
 
@@ -161,18 +195,14 @@ table {
         width:100%;
         margin-left: 15rem;
     }
-    .report{
-        width: 22rem;
-    }
+  
     .calender-con{
         max-width: 22rem;
     }
 
 }
 @media screen and (min-width:1439px){
-    .report{
-        width: 25rem;
-    }
+    
     .calender-con{
         max-width: 25rem;
         width: 25rem;

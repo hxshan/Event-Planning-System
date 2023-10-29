@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -89,8 +90,6 @@ button:hover{
 .car-info-top{
     margin-bottom: 3rem;
 }
-
-
 @media screen and (min-width:1023px){
     .allStores-sec{
         padding-left: 17rem;
