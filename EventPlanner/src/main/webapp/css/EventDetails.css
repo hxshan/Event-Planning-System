@@ -193,10 +193,23 @@ button:hover{
     height: 100%;
     width: 100%;
 }
+.total-price{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding:1rem 2rem;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    outline:1px solid #131E3A;
+}
 @media screen and (min-width:1023px){
 .event-section{
     padding-left: 17rem;
     padding-right: 3rem;
 }
-
+.total-price{
+    padding:1rem 2rem;
+}
 }
