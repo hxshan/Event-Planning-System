@@ -94,10 +94,30 @@
             </div>
             <div class="dashboard-bottom">
                 <div class="Report-con" id="Report-con">
-                    <h2 class="dashboard-title">Report</h2>
-                    <div class="report">
-
-                    </div>
+                    <h2 class="dashboard-title">New Stores</h2>
+                      <div class="report">
+                        <form action="">
+                            <input type="hidden" name="vendorId" value="${latestVendor.getId()}">
+                            <button class="vendor">
+                                <div class="vimage">
+                                	<c:choose>
+                                		<c:when test="${empty latestVendor.getEncodedImage()}">
+                                			<img src="assets/images/store.jpg" alt="store img">
+                                		</c:when>
+                                		<c:when test="${empty latestVendor.getEncodedImage()}">
+                                			<img src="data:image/jpeg;base64,${User.getEncodedImage()}" alt="Image">
+                                		</c:when>
+                                	</c:choose>
+                                    
+                                </div>
+                                <div class="vinfo">
+                                    <h2>
+                                        ${latestVendor.getName()}
+                                    </h2>
+                                </div>
+                            </button>
+                        </form>
+                    </div>           
                 </div>
                 <div class="calender" id="calender">
                     <h2 class="dashboard-title">Calender</h2>

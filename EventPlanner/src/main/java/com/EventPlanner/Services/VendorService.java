@@ -70,7 +70,9 @@ public class VendorService extends UserService{
 				vendor.setUserTypeId(rs.getInt("user_type_id"));
 				vendor.setDescription(rs.getString("description"));
 				vendor.setAddress(rs.getString("address"));
-				vendor.setEncodedImage(rs.getString("Image"));
+
+				vendor.setEncodedImage(rs.getString("image"));
+
 			}
 			rs.close();
 			stmt.close();
@@ -104,7 +106,9 @@ public class VendorService extends UserService{
 				vendor.setUserTypeId(rs.getInt("user_type_id"));
 				vendor.setDescription(rs.getString("description"));
 				vendor.setAddress(rs.getString("address"));
-				vendor.setEncodedImage(rs.getString("Image"));
+
+				vendor.setEncodedImage(rs.getString("image"));
+
 				
 			}
 			rs.close();
@@ -214,7 +218,9 @@ public class VendorService extends UserService{
 				int UserTypeId=(rs.getInt("user_type_id"));
 				String Description=(rs.getString("description"));
 				String Address=(rs.getString("address"));
-				String encodedImage=rs.getString("Image");
+
+				String encodedImage=rs.getString("image");
+
 				
 				Vlist.add(new Vendor(Id,UserTypeId,Name,Email, PhoneNumber,password,encodedImage,Description,Address));
 			}
@@ -230,6 +236,7 @@ public class VendorService extends UserService{
 		
 		
 	}
+
 	
 	public String getServiceTypeByID(int typeid) {
 		Connection con = DBConnectionUtil.getDBConnection();
@@ -277,6 +284,41 @@ public class VendorService extends UserService{
 			DBConnectionUtil.closeConnection(con);
 		}
 	}
+
+
+public Vendor getLatestVendor() {
+	Connection con = DBConnectionUtil.getDBConnection();		
+	String sql="select * from users where user_type_id =(select id from user_types where type ='Vendor') order by id desc limit 1;";
+	PreparedStatement stmt;
+	Vendor vendor=new Vendor();
+	try {
+		stmt = con.prepareStatement(sql);
+		ResultSet rs=stmt.executeQuery();
+		if(rs.next())
+		{
+			vendor.setId(rs.getInt("id"));
+			vendor.setName(rs.getString("name"));
+			vendor.setEmail(rs.getString("email"));
+			vendor.setPhoneNumber(rs.getString("PhoneNumber"));
+			vendor.setUserTypeId(rs.getInt("user_type_id"));
+			vendor.setDescription(rs.getString("description"));
+			vendor.setAddress(rs.getString("address"));
+			vendor.setEncodedImage(rs.getString("image"));
+			
+		}
+		rs.close();
+		stmt.close();
+	} catch (SQLException e) {
+		
+		ErrorLoggerUtil.logError("VendorService(getAllVendors)","SQL ERROR: ", e);
+	}finally{
+		DBConnectionUtil.closeConnection(con);
+		
+	}
+	return vendor;
+	
+}
+
 }
 
 

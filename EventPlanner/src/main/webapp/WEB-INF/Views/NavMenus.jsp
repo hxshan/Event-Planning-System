@@ -27,13 +27,16 @@
                    
                 </div>
                 <div class="nav-item" id="AllEvents">
-                    <form action="" method="post">
+                   <form action="./PageRedirectController" method="get">
+                		<input type="hidden" name="page" value="AllEvents">
+                		<input type="hidden" name="userid" value="${User.getId()}">
                         <button class="nav-link">All Events</button>
                     </form>
                 </div>
                 <div class="nav-item" id="Something">
-                    <form action="" method="post">
-                        <button class="nav-link">Something</button>
+                    <form action="./PageRedirectController" method="get">
+                    	<input type="hidden" name="page" value="AllVendors">
+                        <button class="nav-link">View Stores</button>
                     </form>
                 </div>
             </div>
