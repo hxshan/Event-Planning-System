@@ -70,7 +70,9 @@ public class VendorService extends UserService{
 				vendor.setUserTypeId(rs.getInt("user_type_id"));
 				vendor.setDescription(rs.getString("description"));
 				vendor.setAddress(rs.getString("address"));
+
 				vendor.setEncodedImage(rs.getString("image"));
+
 			}
 			rs.close();
 			stmt.close();
@@ -104,7 +106,9 @@ public class VendorService extends UserService{
 				vendor.setUserTypeId(rs.getInt("user_type_id"));
 				vendor.setDescription(rs.getString("description"));
 				vendor.setAddress(rs.getString("address"));
+
 				vendor.setEncodedImage(rs.getString("image"));
+
 				
 			}
 			rs.close();
@@ -214,7 +218,9 @@ public class VendorService extends UserService{
 				int UserTypeId=(rs.getInt("user_type_id"));
 				String Description=(rs.getString("description"));
 				String Address=(rs.getString("address"));
+
 				String encodedImage=rs.getString("image");
+
 				
 				Vlist.add(new Vendor(Id,UserTypeId,Name,Email, PhoneNumber,password,encodedImage,Description,Address));
 			}
@@ -230,6 +236,55 @@ public class VendorService extends UserService{
 		
 		
 	}
+
+	
+	public String getServiceTypeByID(int typeid) {
+		Connection con = DBConnectionUtil.getDBConnection();
+		String sql = "Select type from servicetype where id = ?";
+		ResultSet rs = null;
+		String type = "";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, typeid);
+			rs = pstmt.executeQuery();
+			if ( rs.next()) {
+					type = rs.getString("type");
+			}
+			
+			pstmt.close();
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBConnectionUtil.closeConnection(con);
+		}
+		
+		return type;
+	}
+	
+	public void UpdateVendorServices(int serviceId, int vendorId, String servicename, String description,
+			BigDecimal price) {
+		Connection con = DBConnectionUtil.getDBConnection();
+		
+		String sql="update service set name=?,description=?,price=? where id=? and vendor_id=?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, servicename);
+			pstmt.setString(2, description);
+			pstmt.setBigDecimal(3, price);
+			pstmt.setInt(4, serviceId);
+			pstmt.setInt(5, vendorId);
+			pstmt.executeUpdate();
+			pstmt.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBConnectionUtil.closeConnection(con);
+		}
+	}
+
 
 public Vendor getLatestVendor() {
 	Connection con = DBConnectionUtil.getDBConnection();		
@@ -264,6 +319,6 @@ public Vendor getLatestVendor() {
 	
 }
 
-
-
 }
+
+

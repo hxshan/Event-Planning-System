@@ -11,59 +11,9 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <header class="header">
-        <button type="button" class="nav_btn" id="nav_btn" onclick="openNavbar()">
-            <img src="Menu.png" alt="menu-btn">
-        </button>
-        <div class="user-pfp">
-        <form action="./PageRedirectController" >
-        <input type="hidden" name="page" value="AddService"/>
-        
-        <button name="button" value="AddService" id="addServiceBtn" class="addEventBtn-desk" >
-                <img src="Plus.png" alt="Add service">
-                <p>Add Service
-                </p>             
-            </button>
-            <button name="button" value="AddService" id="addServiceBtn" class="addEventBtn-mob" >
-                <img src="Plus.png" alt="Add service">
-            </button>
-        
-        </form>
-                        <div class="user-pfp-img">
-                <form action="" method="get">
-                    <input type="hidden" name="page" value="org-profile">
-                    <button class="user-pfp-img-btn" type="submit">
-                        <img src="MaleUser.png" alt="pfp">
-                    </button>
-                </form>                      
-            </div> 
-        </div>
-    </header>
+  <%@ include file="VendorNavbar.jsp" %>
     <main>
-        <div class="nav-background" id="nav-background">       
-            <div class="nav-bar slideRight" id="nav-bar">
-                <button type="button" class="nav-close" id="nav-close" onclick="closeNavbar()">
-                    <img src="Multiply.png" alt="Close">
-                </button>
-
-                <div class="nav-item" id="Dashboard">
-                    <button class="nav-link">
-                        Dashboard
-                    </button>
-                </div>
-                <div class="nav-item" id="AllEvents">
-                    <button class="nav-link">
-                        All Services 
-                    </button>
-                </div>
-                <div class="nav-item" id="Something">
-                    <button class="nav-link">
-                        Orders
-                    </button>
-                </div>
-            </div>
-        </div>
-
+     
         <%@ include file="VendorNavbarMenus.jsp" %>
         
         

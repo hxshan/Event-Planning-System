@@ -57,10 +57,11 @@
     
   </div>
  </form> 
- <a href = "../WEB-INF/Views/VendorDashboard.jsp">
- <button  class="formbold-btn2" type="submit" >
-       Already Have Services
-     </button></a>
+ <form action="./PageRedirectController" method="get" >
+ <input type="hidden" name="page" value="NoService"/>
+ <button  value="NoService"  class="formbold-btn2" type="submit" >
+       Go Back
+     </button></form>
  </div>
  </div>
 </body>

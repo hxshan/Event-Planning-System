@@ -102,7 +102,7 @@ public class UserService {
 					user.setEmail(rs.getString("email"));
 					user.setPhoneNumber(rs.getString("PhoneNumber"));
 					user.setUserTypeId(rs.getInt("user_type_id"));
-					user.setEncodedImage(rs.getString("encodedImage"));
+					user.setEncodedImage(rs.getString("Image"));
 				}
 				rs.close();
 				stmt.close();
@@ -134,7 +134,7 @@ public class UserService {
 					user.setEmail(rs.getString("email"));
 					user.setPhoneNumber(rs.getString("PhoneNumber"));
 					user.setUserTypeId(rs.getInt("user_type_id"));
-					user.setEncodedImage(rs.getString("encodedImage"));
+					user.setEncodedImage(rs.getString("Image"));
 	                 
 	                
 				}
