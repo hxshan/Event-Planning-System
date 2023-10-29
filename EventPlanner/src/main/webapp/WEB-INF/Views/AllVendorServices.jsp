@@ -6,68 +6,68 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="css/Navs-Modals.css">
 <link rel="stylesheet" type="text/css" href="css/AllServices.css">
+<link rel="stylesheet" type="text/css" href="css/AllEvents.css">
 <title>My Services</title>
 </head>
 <body>
+<%@ include file="VendorNavbar.jsp" %>
+<main>
  <%@ include file="VendorNavbarMenus.jsp" %>
-		 <header class="header">
-        <button type="button" class="nav_btn" id="nav_btn" onclick="openNavbar()">
-            <img src="Menu.png" alt="menu-btn">
-        </button>
-          <div class="user-pfp">
-        <form action="./PageRedirectController" >
-        <input type="hidden" name="page" value="AddService"/>
+		
         
-        <button name="button" value="AddService" id="addServiceBtn" class="addEventBtn-desk" >
-                <img src="Plus.png" alt="Add service">
-                <p>Add Service
-                </p>             
-            </button>
-            <button name="button" value="AddService" id="addServiceBtn" class="addEventBtn-mob" >
-                <img src="Plus.png" alt="Add service">
-            </button>
-        
-        </form>
-                        <div class="user-pfp-img">
-                <form action="" method="get">
-                    <input type="hidden" name="page" value="org-profile">
-                    <button class="user-pfp-img-btn" type="submit">
-                        <img src="MaleUser.png" alt="pfp">
-                    </button>
-                </form>                      
-            </div> 
-        </div>
-        </header>
-        
-        <div class="services-con">
-                <h2>
+        <div class="allEvent-sec">
+                <h1>
                     My Services
-                </h2>
+                </h1>
                 
-                <div class="services">
+                <div class="Upcoming">
+                
                 	<c:forEach var="service" items="${SVList}">
-                		<div class="service-card">
+                	
+                		<div class="Event-card">
                 	        <div class="card-img">
                 	            <img src="assets/images/service-placeholder.jpg" alt="">
                 	        </div>
                 	        <div class="card-info">
                 	            <div class="car-info-top">
                 	                <h2>${service.getServiceName()}</h2>
-                	                <p>Vendor</p>
+                	               
                 	            </div>
                 	            <div class="car-info-bottom">
                 	                <p>${service.getDescription()}</p>
-                	                <h2>${service.getPrice()}</h2>      
+                	                <h2>${service.getPrice()}</h2>    
+                	                
+                	                
                 	            </div>
+                	            
+                	            <div class="event-btns-con">
+                    			    	<form action="./PageRedirectController" method="get">
+                            				<input type="hidden" name="page" value="EditService"/>
+                            				<input type="hidden" name="serviceId" value="${service.getId()}"/>
+                            				<button class="event-buttons" type="submit">
+                                				<img src="assets/icons/view more btn.png" alt="">
+                            				</button>
+                        				</form>
+                        				<form action="./ServiceController" method="post">
+                            				<input type="hidden" name="triggerType" value="DeleteService"/>
+                            				<input type="hidden" name="serviceId" value="${service.getId()}"/>
+                            				<input type="hidden" name="vendorId" value="${User.getId()}"/>
+                            				<button class="event-buttons" type="submit">
+                                				<img src="assets/icons/Delete btn.png" alt="">
+                           	 				</button>
+                        				</form>
+                    				</div>
                 	        </div>
                 	    </div>
-                	</c:forEach> 
+                	
+                	</c:forEach>
+                	   
                 </div>
          
             </div>  
     
     
 	
-
+</main>
 </body>
 </html>

@@ -35,7 +35,7 @@ public class ServiceController extends HttpServlet {
 		AddVendoService_Service addvendorService = new AddVendoService_Service();
 		HttpSession session=request.getSession();
 		
-		//Add service Servlet
+		//Add service 
 		
 		if(triggerType.equalsIgnoreCase("AddService")) {
 
@@ -62,35 +62,50 @@ public class ServiceController extends HttpServlet {
 		
 		}
 		
-		//Update Service Servlet
+		//Update Service 
 		
 		else if(triggerType.equalsIgnoreCase("UpdateService")){
-			int VendorId=Integer.parseInt(request.getParameter("userId")) ;
-			int ServiceTypeId=Integer.parseInt(request.getParameter("ServiceTypeId")) ;
+			int ServiceId=Integer.parseInt(request.getParameter("ServiceId")) ;
 			
-			Service service =  addvendorService.getServiceDetails(ServiceTypeId);
+			Service service =  addvendorService.getServiceDetails(ServiceId);
+			int VendorId=Integer.parseInt(request.getParameter("VendorId")) ;
+			
+		
+		
 			session.setAttribute("currentService", service);
 			
-			RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/VendorServicesDetails.jsp");
+			
+			RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/EditVendorServicesDetails.jsp");
 			requestdispatcher.forward(request, response);
 		}
 		
 	
 	
 	
-		//Delet Service Servlet
+		//Delete Service 
 		
 		else if(triggerType.equalsIgnoreCase("DeleteService")) {
-		int VendorId=Integer.parseInt(request.getParameter("userId")) ;
-		int ServiceId=Integer.parseInt(request.getParameter("ServieId")) ;
+			
+		int ServiceId=Integer.parseInt(request.getParameter("serviceId")) ;	
+		int VendorId=Integer.parseInt(request.getParameter("vendorId")) ;
+		
 		
 		addvendorService.deleteService(ServiceId);
-		
 		VendorService vendorService = new VendorService();
+		
+	
 		List<Service> ServiceList = vendorService.getVendorsServices(VendorId);
+		for(Service S:ServiceList) {
+			S.setServiceType(vendorService.getServiceTypeByID(S.getServiceTypeId()));
+		}
+		
+		
 		
 		session.setAttribute("ServiceList", ServiceList);
 		response.sendRedirect("./ServiceController");
+		
+	//	RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/AllVendorServices.jsp");
+	//	requestdispatcher.forward(request, response);
 		
 	}
 }

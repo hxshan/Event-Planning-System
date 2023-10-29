@@ -56,29 +56,7 @@ public class AddVendoService_Service  {
 		
 	}
 	
-	public String getServiceTypeByID(int typeid) {
-		Connection con = DBConnectionUtil.getDBConnection();
-		String sql = "Select type from servicetype where id = ?";
-		ResultSet rs = null;
-		String type = "";
-		try {
-			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, typeid);
-			rs = pstmt.executeQuery();
-			if ( rs.next()) {
-					type = rs.getString("type");
-			}
-			
-			pstmt.close();
-			rs.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			DBConnectionUtil.closeConnection(con);
-		}
-		
-		return type;
-	}
+	
 	
 	public Service getServiceDetails(int serviceID) {
 		Connection con = DBConnectionUtil.getDBConnection();

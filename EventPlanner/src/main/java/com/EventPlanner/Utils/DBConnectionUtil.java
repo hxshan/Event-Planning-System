@@ -16,7 +16,7 @@ public class DBConnectionUtil {
 		try {
 			if(connection == null || connection.isClosed()) {
 				Class.forName("com.mysql.cj.jdbc.Driver");
-				connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/event_planner_db","root","GGsl@1974");
+				connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/event_planner_db","root","Marisstella@22");
 			}
 		} catch (SQLException | ClassNotFoundException e) {
 			

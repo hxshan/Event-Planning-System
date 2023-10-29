@@ -16,6 +16,7 @@ import com.EventPlanner.Models.Event;
 import com.EventPlanner.Models.Service;
 import com.EventPlanner.Models.User;
 import com.EventPlanner.Models.Vendor;
+import com.EventPlanner.Services.AddVendoService_Service;
 import com.EventPlanner.Services.EventService;
 import com.EventPlanner.Services.Services_Service;
 import com.EventPlanner.Services.VendorService;
@@ -112,8 +113,18 @@ public class PageRedirectController extends HttpServlet {
 			session.setAttribute("SVList", SList);
 			request.getRequestDispatcher("/WEB-INF/Views/AllVendorServices.jsp").forward(request, response);
 		}
+		else if (page.equalsIgnoreCase("NoService")) {
+			request.getRequestDispatcher("/WEB-INF/Views/VendorDashboard.jsp").forward(request, response);
+	}
+		else if (page.equalsIgnoreCase("EditService")) {
+			int ServiceId = Integer.parseInt(request.getParameter("serviceId"));
+			
+			AddVendoService_Service addService = new AddVendoService_Service();
+			Service sir = addService.getServiceDetails(ServiceId);
+			session.setAttribute("currentService", sir);
+			request.getRequestDispatcher("/WEB-INF/Views/EditVendorServicesDetails.jsp").forward(request, response);
+
 	}
 
-
-
+	}
 }

@@ -13,6 +13,8 @@ public class Service {
 		
 		//for views only :)
 		private String VendorName;
+		private String serviceType;
+		private String vendorname;
 		
 		
 		public Service() {
@@ -98,6 +100,28 @@ public class Service {
 		public void setVendorName(String vendorName) {
 			VendorName = vendorName;
 		}
+
+
+		public String getServiceType() {
+			return serviceType;
+		}
+
+
+		public void setServiceType(String serviceType) {
+			this.serviceType = serviceType;
+		}
+
+
+		public String getVendorname() {
+			return vendorname;
+		}
+
+
+		public void setVendorname(String vendorname) {
+			this.vendorname = vendorname;
+		}
+		
+		
 		
 		
 

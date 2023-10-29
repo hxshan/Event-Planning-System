@@ -83,9 +83,8 @@
   <servlet-mapping>
     <servlet-name>EditServiceImageController</servlet-name>
     <url-pattern>/EditServiceImageController</url-pattern>
- </servlet-mapping>
- 
- <servlet>
+  </servlet-mapping>
+  <servlet>
     <description></description>
     <display-name>EventServicesController</display-name>
     <servlet-name>EventServicesController</servlet-name>
@@ -95,8 +94,6 @@
     <servlet-name>EventServicesController</servlet-name>
     <url-pattern>/EventServicesController</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <description></description>
     <display-name>searchServiceController</display-name>
@@ -106,5 +103,15 @@
   <servlet-mapping>
     <servlet-name>searchServiceController</servlet-name>
     <url-pattern>/searchServiceController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditVendorServiceDetails</display-name>
+    <servlet-name>EditVendorServiceDetails</servlet-name>
+    <servlet-class>com.EventPlanner.Controllers.EditVendorServiceDetails</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditVendorServiceDetails</servlet-name>
+    <url-pattern>/EditVendorServiceDetails</url-pattern>
   </servlet-mapping>
 </web-app>

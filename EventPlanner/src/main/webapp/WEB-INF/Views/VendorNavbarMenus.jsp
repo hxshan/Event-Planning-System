@@ -38,7 +38,11 @@
 
        <div class="nav-desktop">
             <div class="logo">
-                LOGO    
+            
+                 <img src="assets/images/ELOGO-dashboard.png" alt="">  
+                 
+                 
+                
             </div>
             <div class="nav-desktop-item">
                 <form action="./PageRedirectController" method="get">
