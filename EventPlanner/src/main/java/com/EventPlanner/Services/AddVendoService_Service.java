@@ -35,7 +35,7 @@ public class AddVendoService_Service  {
 		
 		
 	}catch (SQLException e) {
-		e.printStackTrace();
+		ErrorLoggerUtil.logError("AddVendoService_Service(AddService)","SQL ERROR: ", e);
 	}finally {
 		DBConnectionUtil.closeConnection(con);
 	}
@@ -70,7 +70,7 @@ public class AddVendoService_Service  {
 				service.setImage(rSet.getString("image"));
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			ErrorLoggerUtil.logError("AddVendoService_Service(getServiceDetails)","SQL ERROR: ", e);
 		}
 		return service;
 		
@@ -86,7 +86,7 @@ public class AddVendoService_Service  {
 			pstmt.executeUpdate();
 			pstmt.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			ErrorLoggerUtil.logError("AddVendoService_Service(deleteService)","SQL ERROR: ", e);
 		}finally {
 			DBConnectionUtil.closeConnection(con);
 		}

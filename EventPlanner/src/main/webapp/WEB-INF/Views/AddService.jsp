@@ -15,7 +15,7 @@
 <div class="formbold-main-wrapper">
     
     <div class="formbold-form-wrapper">
-	<form action="./ServiceController" method="post">
+	<form action="./ServiceController" method="post" onsubmit = "return validateServiceDetailsForm()">
 		<input type="hidden" name="triggerType" value="AddService"/>
     	<input type="hidden" name="userId" value="${User.getId()}"/>
      <div class="formbold-mb-5">

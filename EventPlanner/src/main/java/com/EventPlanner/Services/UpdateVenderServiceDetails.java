@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 
 
 import com.EventPlanner.Utils.DBConnectionUtil;
+import com.EventPlanner.Utils.ErrorLoggerUtil;
 
 public class UpdateVenderServiceDetails {
 	public void UpdateVendorServices(int serviceId, int vendorId, String servicename, String description,
@@ -25,7 +26,7 @@ public class UpdateVenderServiceDetails {
 			pstmt.close();
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			ErrorLoggerUtil.logError("UpdateVenderServiceDetails(UpdateVendorServices)","SQL ERROR: ", e);
 		}finally {
 			DBConnectionUtil.closeConnection(con);
 		}

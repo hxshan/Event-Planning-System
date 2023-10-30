@@ -43,9 +43,7 @@
                     <label for="remember" class="form-label">Remember me</label>
                 </div> -->
 			<button type="submit" id="submit" value="Submit" class="login-btn">Login</button>
-			<p class="forgot-password">
-				<a href="#" class="forgot-link">Forgot password?</a>
-			</p>
+		
 		</form>
 	</main>
 

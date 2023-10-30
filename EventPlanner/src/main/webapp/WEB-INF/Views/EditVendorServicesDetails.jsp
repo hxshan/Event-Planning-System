@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"  type="text/css" href="css/ServiceInfo.css" />
 <link rel="stylesheet" type="text/css" href="css/Navs-Modals.css">
+ <script src="../scripts/FromValidations.js"></script>
 <title>Edit Service Details</title>
 </head>
 <body>
@@ -47,7 +48,7 @@
                 </form>
             </div>
             	
-                <form class="servicedetails-form" action="./EditVendorServiceDetails" method="post">
+                <form class="servicedetails-form" action="./EditVendorServiceDetails" method="post" onsubmit = "return validateEditServiceDetailsForm()">
                 	<input type="hidden" value="${currentService.getId()}" name="Id">
                 	<input type="hidden" value="${User.getId()}" name="userId">
                     <div class="form-group">

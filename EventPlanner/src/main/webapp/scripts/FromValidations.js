@@ -64,3 +64,15 @@ function validateUserRegisterForm() {
 		  }
 		  return true; //all the details will be submitted to the mentioned JSP
 	  }
+	  
+	     function validateEditServiceDetailsForm(){
+		  var servicename = document.getElementById("Servicename").value;
+		  var description = document.getElementById("discription").value;
+		  var price = document.getElementById("price").value;
+		  
+		  if(servicename === "" || description === "" || price === ""){
+			  alert("All fields must be filled out!");
+			  return false;
+		  }
+		  return true; //all the details will be submitted to the mentioned JSP
+	  }
