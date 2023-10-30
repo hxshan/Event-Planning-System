@@ -53,7 +53,7 @@
                    <h2>New Event</h2>
                </div>
                 <div class="modal-body">
-                     <form class="addEvent-form" action="./EventController" method="post">
+                     <form class="addEvent-form" action="./EventController" method="post" onsubmit="return ValidateEventDetailsForm()">
                          <input type="hidden" name="triggerType" value="AddEvent"/>
                          <input type="hidden" value="${User.getId()}" name="userId">
                        
@@ -74,7 +74,7 @@
                          <div class="form-row">
                                <label for="eventType">Event Type</label>
                                <select class="eventType-select" name="eventType" id="eventType" required>
-                                   <option value="NULL">Select Type</option>
+                                   <option value="">Select Type</option>
                   
                                  <c:forEach var="eventType" items="${etList}">
                                          <option value="${eventType.getId()}">${eventType.getType()} </option>
@@ -139,5 +139,8 @@
              </div>
             
         </div>
+        <script src="scripts/FromValidations.js"></script>
+        
+        
 </body>
 </html>

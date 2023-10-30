@@ -50,11 +50,11 @@
 	                                <p>TBD</p>
 	                            </div>
 	                            <div class="service-btns">
-	                                <form action="./EventServicesController" method="post">
+	                                <form id="deleteForm" action="./EventServicesController" method="post">
 	                                    <input type="hidden" name="serviceId" value="${service.getId()}">
 	                                    <input type="hidden" name="eventId" value="${currentEvent.getId()}">
 	                                    <input type="hidden" name="triggerType" value="deleteService">
-	                                    <button type="submit">
+	                                    <button type="button" onclick="confirmDelete()">
 	                                    DELETE
 	                                       <!--  <img src="assets/icons/Delete btn.png" alt=""> -->
 	                                    </button>
@@ -92,6 +92,15 @@ if (prices.length == 0) {
     tot += parseFloat(p.textContent); 
   });
   price.innerText = tot.toFixed(2);
+}
+
+function confirmDelete() {
+    
+    if (confirm("Are you sure you want to delete this item?")) {
+        document.getElementById("deleteForm").submit();
+    } else {
+    	
+    }
 }
 	
 

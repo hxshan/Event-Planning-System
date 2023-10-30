@@ -73,5 +73,6 @@
     </div>
 	
 	</main>
+	<script src="scripts/NavigationModals.js"></script>
 </body>
 </html>

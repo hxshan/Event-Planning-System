@@ -58,7 +58,7 @@
                     </div>
                     <div class="form-group">
                         <label for="phoneNumber">Phone Number</label>
-                        <input type="text" name="phoneNumber" id="phoneNumber" value="${User.getPhoneNumber()}">
+                        <input type="tel" name="phoneNumber" id="phoneNumber" value="${User.getPhoneNumber()}">
                     </div>
 
                     <div class="form-group">
@@ -75,12 +75,18 @@
 		var name = document.getElementById("name").value;
 		var email = document.getElementById("email").value;
 		var PhoneNumber = document.getElementById("phoneNumber").value;
+		var phonePattern=/^[0]{1}[7]{1}[01245678]{1}[0-9]{7}$/;
+		
 		var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 		var password = document.getElementById("password").value;
 		if (name.trim() === "" || email.trim() ==="" || password.trim() ===""||PhoneNumber==="" ) {
 			alert("All fields must be filled out!");
 			return false;
 		}
+		if (!phonePattern.test(PhoneNumber)) {
+  			alert("Invalid phone number");
+    		return false;
+ 		}
 		if (!emailPattern.test(email)) {
   			alert("Invalid email address");
     		return false;

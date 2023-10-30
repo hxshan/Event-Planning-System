@@ -77,11 +77,11 @@
                                 				<img src="assets/icons/view more btn.png" alt="">
                             				</button>
                         				</form>
-                        				<form action="./EventController" method="post">
+                        				<form action="./EventController" id="deleteForm" method="post">
                             				<input type="hidden" name="triggerType" value="DeleteEvent"/>
                             				<input type="hidden" name="eventId" value="${event.getId()}"/>
                             				<input type="hidden" name="userId" value="${User.getId()}"/>
-                            				<button class="event-buttons" type="submit">
+                            				<button class="event-buttons"  type="button" onclick="confirmDelete()">
                                 				<img src="assets/icons/Delete btn.png" alt="">
                            	 				</button>
                         				</form>
@@ -190,6 +190,18 @@
                 calendarBody.lastElementChild.appendChild(cell);
               }
             }
+            
+            
+          
+            function confirmDelete() {
+      
+                if (confirm("Are you sure you want to delete this item?")) {
+                    document.getElementById("deleteForm").submit();
+                } else {
+                	
+                }
+            }
+            
     </script>
 </body>
 </html>

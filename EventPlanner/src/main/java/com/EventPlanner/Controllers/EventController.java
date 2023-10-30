@@ -17,6 +17,7 @@ import com.EventPlanner.Models.Event;
 import com.EventPlanner.Models.EventType;
 import com.EventPlanner.Models.Service;
 import com.EventPlanner.Services.EventService;
+import com.EventPlanner.Utils.ErrorLoggerUtil;
 
 public class EventController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -41,7 +42,7 @@ public class EventController extends HttpServlet {
 		try {
 		/*=======================================ADDING NEW EVENT==========================================*/
 		if(triggerType.equalsIgnoreCase("AddEvent")) {
-			
+			try {
 			String eventName=request.getParameter("EventName").trim();
 			int typeId = Integer.parseInt(request.getParameter("eventType"));
 			int userid=Integer.parseInt(request.getParameter("userId"));
@@ -67,7 +68,12 @@ public class EventController extends HttpServlet {
 			/*RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/Dashboard.jsp");
 			requestdispatcher.forward(request, response);*/
 			response.sendRedirect("./EventController");
-			
+			}catch(NullPointerException  e) {
+				
+				ErrorLoggerUtil.logError("EventController", "frontend validation", e);
+				RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/Dashboard.jsp");
+				requestdispatcher.forward(request, response);
+			}
 		}
 		
 		/*=======================================EDITING EVENT==========================================*/
