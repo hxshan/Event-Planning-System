@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"  type="text/css" href="css/OrganiserInfo.css" />
 <link rel="stylesheet" type="text/css" href="css/Navs-Modals.css">
+ 
 <title>User Profile</title>
 </head>
 <body>
@@ -45,13 +46,13 @@
                 </form>
             </div>
             <div class="userdetails">
-                <form class="userdetails-form" action="./UpdateUserController" method="post">
+                <form class="userdetails-form" action="./UpdateUserController" method="post" onsubmit="return validateUserUpdateForm()">
                 	<input type="hidden" value="${User.getId()}" name="userId">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" name="name" id="name" value="${User.getName()}">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="display:none">
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" value="${User.getEmail()}">
                     </div>
@@ -68,5 +69,26 @@
         </div>
     </main>
     <script src="scripts/NavigationModals.js"></script>
+    <script type="text/javascript">
+    
+	function validateUserUpdateForm() {
+		var name = document.getElementById("name").value;
+		var email = document.getElementById("email").value;
+		var PhoneNumber = document.getElementById("phoneNumber").value;
+		var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+		var password = document.getElementById("password").value;
+		if (name.trim() === "" || email.trim() ==="" || password.trim() ===""||PhoneNumber==="" ) {
+			alert("All fields must be filled out!");
+			return false;
+		}
+		if (!emailPattern.test(email)) {
+  			alert("Invalid email address");
+    		return false;
+ 		}
+	
+		return true;
+	}
+ 
+ </script>
 </body>
 </html>

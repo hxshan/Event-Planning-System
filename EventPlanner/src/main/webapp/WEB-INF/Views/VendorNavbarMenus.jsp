@@ -33,6 +33,7 @@
                         <button class="nav-link">Orders</button>
                     </form>
                 </div>
+                 
             </div>
         </div>
 
@@ -61,6 +62,9 @@
                     <form action="" method="post">
                         <button class="nav-link">Orders</button>
                     </form>
+             </div>
+             <div class="nav-desktop-item">
+                    <a class="nav-link" style="text-decoration:none; text-align:center;" href="./logout">Logout</a>  
              </div>
         </div>
 </body>

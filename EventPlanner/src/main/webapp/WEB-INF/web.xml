@@ -124,4 +124,14 @@
     <servlet-name>VendorServiceController</servlet-name>
     <url-pattern>/VendorServiceController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>logout</display-name>
+    <servlet-name>logout</servlet-name>
+    <servlet-class>com.EventPlanner.Controllers.logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
 </web-app>

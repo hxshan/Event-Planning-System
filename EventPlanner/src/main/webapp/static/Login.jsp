@@ -14,8 +14,7 @@
 </head>
 <body>
 	<main class="login-con">
-		<form class="form" action="../LoginController" method="post"
-			onsubmit="return validateLoginForm()">
+		<form class="form" action="../LoginController" method="post" onsubmit="return validateLoginForm()">
 			<h1 class="title">Login</h1>
 			<div class="form-group">
 				<label for="email" class="form-label">Email</label> <input
@@ -43,7 +42,10 @@
                     <label for="remember" class="form-label">Remember me</label>
                 </div> -->
 			<button type="submit" id="submit" value="Submit" class="login-btn">Login</button>
+<<<<<<< Updated upstream
 		
+=======
+>>>>>>> Stashed changes
 		</form>
 	</main>
 

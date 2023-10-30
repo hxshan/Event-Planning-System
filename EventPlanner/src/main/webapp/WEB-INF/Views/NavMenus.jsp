@@ -135,6 +135,10 @@
                         
                     </form>
              </div>
+             <div class="nav-desktop-item">
+                    <a class="nav-link" style="text-decoration:none; text-align:center;" href="./logout">Logout</a>  
+             </div>
+            
         </div>
 </body>
 </html>
