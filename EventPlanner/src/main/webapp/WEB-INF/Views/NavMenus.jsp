@@ -59,22 +59,21 @@
                        
                          <div class="form-row">
                                <label for="EvenName">Event Name</label>
-                               <input id="EvenName" name="EventName" type="text" />
+                               <input id="EvenName" name="EventName" type="text" required/>
                          </div>
    
                          <div class="form-row">
                                <label for="startDate">Start Date</label>
-                               <input id="startDate" name="startDate" type="date" />
+                               <input id="startDate" name="startDate" type="date" required/>
                          </div>
    
                              <div class="form-row">
                                <label for="endDate">End Date</label>
-                               <input id="endDate" name="endDate" type="date" />
+                               <input id="endDate" name="endDate" type="date" required/>
                          </div>
-                 
                          <div class="form-row">
                                <label for="eventType">Event Type</label>
-                               <select class="eventType-select" name="eventType" id="eventType">
+                               <select class="eventType-select" name="eventType" id="eventType" required>
                                    <option value="NULL">Select Type</option>
                   
                                  <c:forEach var="eventType" items="${etList}">

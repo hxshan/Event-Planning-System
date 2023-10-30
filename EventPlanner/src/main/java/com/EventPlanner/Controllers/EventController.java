@@ -38,7 +38,7 @@ public class EventController extends HttpServlet {
 		HttpSession session=request.getSession();
 		//List<EventType> et = eventservice.getEventTypes();
 		
-		
+		try {
 		/*=======================================ADDING NEW EVENT==========================================*/
 		if(triggerType.equalsIgnoreCase("AddEvent")) {
 			
@@ -104,6 +104,10 @@ public class EventController extends HttpServlet {
 			
 			/*RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/Dashboard.jsp");
 			requestdispatcher.forward(request, response);*/
+		}
+		}catch(Exception e) {
+			RequestDispatcher requestdispatcher = getServletContext().getRequestDispatcher("/WEB-INF/Views/Dashboard.jsp");
+			requestdispatcher.forward(request, response);
 		}
 		
 		
